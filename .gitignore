@@ -1,0 +1,22 @@
+# Podcast renders — too large, keep as separate release assets
+skills/podcast-gen/output/
+skills/podcast-gen/cache/
+
+# Temp files
+*.tmp
+*.bak
+.DS_Store
+__pycache__/
+*.pyc
+
+# Node modules
+node_modules/
+
+# Environment files (contain secrets)
+.env
+.env.*
+!.env.example
+
+# Large test datasets
+skills/reddit-research/test_data/
+skills/youtube-watcher/downloads/

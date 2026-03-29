@@ -1,0 +1,163 @@
+
+Quality check: 41 segments | threshold: 92% | LIVE
+============================================================
+  [whisper] Loading model 'tiny'...
+  [000] FAIL 43%  dagoth: The world is on fire, a video game scored an 89, and your vi
+           GOT: The world is on fire, a video game scored in 89, and your vi
+  [001] MISSING  001_dagoth.mp3
+  [002] MISSING  002_rosa.mp3
+  [003] MISSING  003_jessica.mp3
+  [004] MISSING  004_dagoth.mp3
+  [005] MISSING  005_rosa.mp3
+  [006] MISSING  006_dagoth.mp3
+  [007] MISSING  007_rosa.mp3
+  [008] MISSING  008_dagoth.mp3
+  [009] MISSING  009_rosa.mp3
+  [010] MISSING  010_jessica.mp3
+  [011] MISSING  011_dagoth.mp3
+  [012] MISSING  012_jessica.mp3
+  [013] MISSING  013_rosa.mp3
+  [014] MISSING  014_dagoth.mp3
+  [015] MISSING  015_rosa.mp3
+  [016] MISSING  016_dagoth.mp3
+  [017] MISSING  017_jessica.mp3
+  [018] MISSING  018_rosa.mp3
+  [019] MISSING  019_dagoth.mp3
+  [020] FAIL 2%  dagoth: Now to the segment that warranted its own title. A June 2024
+           GOT: Below, NOS 0.68 milligrams per day, Thiamine intake had litt
+  [021] FAIL 3%  rosa: A J-curve. Meaning what, exactly?
+           GOT: Hold on. The RDA, the recommended daily allowance for adults
+  [022] FAIL 10%  dagoth: Below 0.68 milligrams per day, thiamine intake had little me
+           GOT: That is what the data shows. Yes.
+  [023] FAIL 22%  rosa: Hold on. The RDA — the recommended daily allowance — for adu
+           GOT: and supplements. What are supplements running?
+  [024] FAIL 14%  dagoth: That is what the data shows, yes.
+           GOT: Standard B1 supplements commonly contain 50-100 milligrams p
+  [025] FAIL 5%  rosa: And supplements. What are supplements running?
+           GOT: 50 to 100. The optimal ceiling is 1mg and people are dosing 
+  [026] MISSING  026_dagoth.mp3
+  [027] MISSING  027_rosa.mp3
+  [028] MISSING  028_jessica.mp3
+  [029] FAIL 3%  dagoth: There is a critical nuance. The Frontiers 2025 review on B-c
+           GOT: Exactly. The study population was cognitively healthy older 
+  [030] MISSING  030_rosa.mp3
+  [031] FAIL 1%  dagoth: Exactly. The study population was cognitively healthy older 
+           GOT: The proposed mechanisms are metabolic. Theyamine is a co-fac
+  [032] MISSING  032_jessica.mp3
+  [033] MISSING  033_dagoth.mp3
+  [034] MISSING  034_rosa.mp3
+  [035] MISSING  035_jessica.mp3
+  [036] MISSING  036_dagoth.mp3
+  [037] MISSING  037_rosa.mp3
+  [038] MISSING  038_jessica.mp3
+  [039] MISSING  039_dagoth.mp3
+  [040] MISSING  040_dagoth.mp3
+
+============================================================
+Pass: 0/41  Fail: 41/41
+
+Re-recording 41 failed segment(s)...
+
+Traceback (most recent call last):
+  File "/root/.openclaw/workspace/skills/podcast-gen/scripts/quality_check.py", line 342, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/root/.openclaw/workspace/skills/podcast-gen/scripts/quality_check.py", line 272, in main
+    if fail['reason'] in ('missing', ) or 'path' not in fail:
+       ~~~~^^^^^^^^^^
+KeyError: 'reason'
+Performing pre-flight checks...
+  ⚠ Skipping health check (low latency servers only)
+  ✓ Assets verified
+
+Backend: CHATTERBOX
+Rendering 38 chunks (41 original lines)...
+
+[1/38] dagoth: The world is on fire, a video game scored an 89, and your vitamin supp...
+  ✓ 669,188 bytes
+[2/38] rosa: So they shot the supreme leader, blew up the nukes, tanked twenty perc...
+  ✓ 97,364 bytes
+[3/38] jessica: [sigh] Oh, I think it's theater, darling. The slow curtain raise. You ...
+  ✓ 113,156 bytes
+[4/38] dagoth: The Houthis remain unengaged with zero successful strikes on Israel. T...
+  ✓ 207,572 bytes
+[5/38] rosa: Six dead Americans, a refinery in flames, and gas prices about to go v...
+  ✓ 64,556 bytes
+[6/38] dagoth: Resident Evil 9: Requiem. Reviews went live February 25th, with the ga...
+  ✓ 341,180 bytes
+[7/38] rosa: Alright, numbers are nice. What does it actually feel like? Is it surv...
+  ✓ 91,004 bytes
+[8/38] dagoth: Both, intentionally and successfully — according to the majority of re...
+  ✓ 305,396 bytes
+[9/38] rosa: Leon Kennedy. They dragged Leon back. I mean, I like Leon. But bringin...
+  ✓ 114,596 bytes
+[10/38] jessica: Ah, but here is where it gets delicious. Some critics are calling it a...
+  ✓ 165,908 bytes
+[11/38] dagoth: Metacritic removed several reviews from the aggregated score — includi...
+  ✓ 189,812 bytes
+[12/38] jessica: So critics used AI to review a video game where the villain is presuma...
+  ✓ 201,116 bytes
+[13/38] rosa: It's a scandal. Don't romanticize it. These outlets were getting paid ...
+  ✓ 114,236 bytes
+[14/38] dagoth: The removed reviews were identified and excised. The remaining score r...
+  ✓ 179,228 bytes
+[15/38] rosa: Fair. But back to the nostalgia question. Steam players are saying the...
+  ✓ 204,692 bytes
+[16/38] dagoth: The dual protagonist structure creates a genuine design tension. Leon'...
+  ✓ 234,284 bytes
+[17/38] jessica: What I find wonderful is this: Grace Ashcroft is apparently the real d...
+  ✓ 258,932 bytes
+[18/38] rosa: If they let her headline the next one instead of hedging with Leon, I'...
+  ✓ 138,212 bytes
+[19/38] dagoth: The verdict: technically accomplished, narratively contested, historic...
+  ✓ 515,252 bytes
+[20/38] rosa: A J-curve. Meaning what, exactly?
+  ✓ 24,380 bytes
+[21/38] dagoth: Below 0.68 milligrams per day, thiamine intake had little measurable i...
+  ✓ 292,460 bytes
+[22/38] rosa: Hold on. The RDA — the recommended daily allowance — for adults is 1.1...
+  ✓ 120,092 bytes
+[23/38] dagoth: That is what the data shows, yes.
+  ✓ 22,052 bytes
+[24/38] rosa: And supplements. What are supplements running?
+  ✓ 27,956 bytes
+[25/38] dagoth: Standard B1 supplements commonly contain 50 to 100 milligrams per dose...
+  ✓ 68,996 bytes
+[26/38] rosa: Fifty to a hundred. The optimal ceiling is one milligram, and people a...
+  ✓ 124,316 bytes
+[27/38] jessica: I love this. I absolutely love this. The bottle says 'supports cogniti...
+  ✓ 195,668 bytes
+[28/38] dagoth: There is a critical nuance. The Frontiers 2025 review on B-complex neu...
+  ✓ 343,532 bytes
+[29/38] rosa: So the people medicating themselves with B-complex for 'brain fog' mig...
+  ✓ 102,332 bytes
+[30/38] dagoth: Exactly. The study population was cognitively healthy older adults. Th...
+  ✓ 154,268 bytes
+[31/38] jessica: And here is the delicious part — this is all correlational. They did n...
+  ✓ 231,212 bytes
+[32/38] dagoth: The proposed mechanisms are metabolic. Thiamine is a cofactor in energ...
+  ✓ 397,220 bytes
+[33/38] rosa: And the RDA is 1.1 to 1.2 mg. Everyone's been pounding supplements con...
+  ✓ 199,364 bytes
+[34/38] jessica: It's worse than that. The bottle says 'supports neurological function....
+  ✓ 194,804 bytes
+[35/38] dagoth: The takeaway is this: vitamins are not a free lunch. They are drugs. T...
+  ✓ 340,412 bytes
+[36/38] rosa: So the summary is: eat food, not pills. And if you must take a pill, m...
+  ✓ 116,828 bytes
+[37/38] jessica: [laugh] I am going to savor this. The next time someone tells me they ...
+  ✓ 191,828 bytes
+[38/38] dagoth: That is all we have time for on this topic. The research is young, the...
+  ✓ 316,244 bytes
+
+Running quality check (threshold: 92%)...
+  ⚠ Some segments could not be fixed — proceeding with best available audio.
+
+♪ Intro prepended
+♪ Outro appended
+🎨 Album art embedded: cover.png
+
+✓ Podcast: /root/.openclaw/workspace/skills/podcast-gen/podcast.mp3
+  Title:  podcast-gen
+  Artist: The Daily Dagoth  |  Album: The Daily Dagoth Podcast  |  Track: 0
+  38 segments, 7.9 MB

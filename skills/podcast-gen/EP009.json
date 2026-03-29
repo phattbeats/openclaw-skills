@@ -1,0 +1,192 @@
+{
+  "episode": "EP009",
+  "title": "Too Much of a Good Thing",
+  "date": "2026-03-05",
+  "hosts": ["Dagoth Ur", "Rosa", "Jessica"],
+  "segments": [
+    {
+      "type": "intro",
+      "speaker": "Dagoth Ur",
+      "text": "The world is on fire, a video game scored an 89, and your vitamin supplements may be quietly eroding your mind. Welcome to The Daily Dagoth — where we separate signal from noise, and occasionally find that the signal is worse than the noise. I am Dagoth Ur. With me, as always, are Rosa and Jessica. Let us begin."
+    },
+    {
+      "type": "segment",
+      "topic": "Iran War",
+      "lines": [
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Day five of Operation Epic Fury. The United States and Israel have established local air superiority over western Iran and Tehran. Over two hundred Iranian air defense systems have been destroyed since February 28th. The Natanz nuclear facility has been struck — satellite imagery confirms at least three buildings severely damaged. The Supreme Leader, Ali Khamenei, is confirmed dead. An Interim Leadership Council has been announced, including Ali Larijani. Iran has launched retaliatory strikes across the Gulf region: the Saudi Aramco Ras Tanura refinery is offline, Qatar's LNG plants — representing roughly twenty percent of global supply — have been halted. Six American servicemembers were killed in an attack on Camp Arifjan, Kuwait on March 1st. Trump has promised a, quote, big wave of strikes coming soon."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "So they shot the supreme leader, blew up the nukes, tanked twenty percent of global LNG, and Trump's still teasing the main event. What the hell are they waiting for? A formal invitation?"
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Oh, I think it's theater, darling. The slow curtain raise. You don't open with your best number — you let the audience marinate in dread. The Houthis haven't even joined yet. It's an ensemble cast and we're still in act one."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The Houthis remain unengaged with zero successful strikes on Israel. Their potential targets — Camp Lemonnier in Djibouti, the UAE base in Somaliland — suggest the conflict has significant room to expand geographically. The Strait of Hormuz closure threat is not idle rhetoric. The IRGC has already hit tankers in the Gulf of Oman. Markets will feel this before armies do."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Six dead Americans, a refinery in flames, and gas prices about to go vertical. Yeah, I'm done with this one. Next."
+        }
+      ]
+    },
+    {
+      "type": "segment",
+      "topic": "Resident Evil 9",
+      "lines": [
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Resident Evil 9: Requiem. Reviews went live February 25th, with the game launching in early March. It currently holds an 89 on Metacritic across more than one hundred critic reviews on PS5. To contextualize that number: this is the highest score for a mainline Resident Evil title since RE4's 96 in 2005. RE7 scored 86, Village scored 84, and RE6 — the low point — scored 67. The 2023 RE4 remake scored 93, but that is a remake, not an original entry. This is the highest original mainline score in over two decades."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Alright, numbers are nice. What does it actually feel like? Is it survival horror, is it an action movie, or is it another one of those games that's trying to be both and ends up being neither?"
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Both, intentionally and successfully — according to the majority of reviewers. The game runs dual protagonists: Leon Kennedy in a third-person, action-oriented mode, and new character Grace Ashcroft in a first-person, psychological horror mode. It is the first mainline entry to ship with both camera options available at launch. Environments include Raccoon City ruins and new grimy locations that critics have praised for atmosphere. The consensus is that it balances bombastic set pieces with slow-burn tension more effectively than Village managed."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Leon Kennedy. They dragged Leon back. I mean, I like Leon. But bringing back Leon and Raccoon City in the same game feels like they went through the franchise closet and grabbed every beloved thing they could carry."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Ah, but here is where it gets delicious. Some critics are calling it a remix of RE2 and RE4. A greatest hits album in a new sleeve. And that might be fine — a well-executed remix is still worth hearing. But before we go any further, can we talk about the review scandal? Because I find it absolutely enchanting."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Metacritic removed several reviews from the aggregated score — including those from Videogamer — after it was determined they were AI-generated. This raises an uncomfortable question about what, precisely, an 89 means when the pool of reviews has been contaminated and subsequently pruned. The score is now smaller and presumably cleaner, but the trust question lingers."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "So critics used AI to review a video game where the villain is presumably some form of biological horror. The irony writes itself. Machines reviewing human entertainment, passing judgment on craft, on fear, on nostalgia — and nobody noticed until someone checked. That is either a scandal or a prophecy, and I haven't decided which."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "It's a scandal. Don't romanticize it. These outlets were getting paid to have an opinion and they outsourced the opinion. The 89 might be real, it might not be. We just don't know how many fake reviews snuck through that nobody caught."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The removed reviews were identified and excised. The remaining score reflects human critical consensus. Whether that consensus is well-calibrated is a separate debate — one that predates AI entirely. Metacritic aggregation has always blended thoughtful analysis with commercial access journalism. That problem did not begin this week."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Fair. But back to the nostalgia question. Steam players are saying the story is a trainwreck. 'Trainwreck but fun' is a direct quote. That is not what I want to hear about a franchise that used to have some of the tightest, most cohesive lore in survival horror. RE2 had a story. RE4 had a story. If Requiem is leaning on their bones while telling a mess, that's a problem."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The dual protagonist structure creates a genuine design tension. Leon's arc and Grace's arc must intersect in a way that justifies both modes of play. Critics who praised it note the balance; players who criticized it note the seams. Both observations can be simultaneously true. A game can be mechanically superb and narratively strained. An 89 measures the former more readily than the latter."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "What I find wonderful is this: Grace Ashcroft is apparently the real discovery. New character, first-person horror, psychological dread — no legacy to carry. While everyone debates whether Leon deserved to come back, Grace is quietly building a fanbase from scratch. The franchise brought its favorite son home and may have accidentally created the character who makes him obsolete. That is a beautiful kind of irony. That is the kind of thing that keeps a series alive for another twenty years."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "If they let her headline the next one instead of hedging with Leon, I'm in. Give me the new blood. The 89 is earned or it isn't — we'll know in six months when the discourse settles. Right now it smells like the best mainline entry since 2005, and I'll take that."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The verdict: technically accomplished, narratively contested, historically significant for the franchise. The AI review scandal is a real but bounded concern — the score is what it is after the purge. Whether Requiem is a genuine evolution or a well-polished echo is a question the next entry will answer. This one earned its number."
+        }
+      ]
+    },
+    {
+      "type": "segment",
+      "topic": "Thiamine Paradox",
+      "lines": [
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Now to the segment that warranted its own title. A June 2024 paper in BMJ General Psychiatry examined the relationship between dietary thiamine intake — that is, Vitamin B1 — and cognitive decline in older adults. The dataset: China Health and Nutrition Survey, 3,106 participants, age 55 and older, average age 63, monitored over approximately six years. Cognitive function was assessed via standardized tests covering verbal memory, attention, calculation, and global score. What the researchers found was not linear. It was a J-curve."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "A J-curve. Meaning what, exactly?"
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Below 0.68 milligrams per day, thiamine intake had little measurable impact on cognitive decline rate. Above 0.68 milligrams per day, each additional milligram per day was associated with a 4.24 point decrease in global cognitive score and a 0.49 unit decrease in composite score over five years. That is approximately 15% faster cognitive decline compared to the optimal range. The optimal intake identified was 0.6 to just under 1 milligram per day."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Hold on. The RDA — the recommended daily allowance — for adults is 1.1 to 1.2 milligrams. They're saying the optimal is below the government recommendation. And that going above it speeds up cognitive decline."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "That is what the data shows, yes."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "And supplements. What are supplements running?"
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Standard B1 supplements commonly contain 50 to 100 milligrams per dose. Some formulations go higher."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Fifty to a hundred. The optimal ceiling is one milligram, and people are dosing at fifty to a hundred. That is fifty to a hundred times over what this study suggests is optimal. And the entire supplement industry has been selling this as brain health."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "I love this. I absolutely love this. The bottle says 'supports cognitive function.' The study says it may accelerate cognitive decline. The label is not technically lying — it supports cognitive function at the correct dose, in the same way that water supports life and drowning involves water. The supplement industry has discovered that the truth can be inverted simply by omitting the scale."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "There is a critical nuance. The Frontiers 2025 review on B-complex neuropsychiatric manifestations documents that high-dose benfotiamine — a fat-soluble thiamine derivative — showed measurable cognitive improvement in patients with mild to moderate dementia. The paradox is real: the same nutrient in excess appears harmful in healthy older adults and potentially beneficial in those with established disease. This is not a simple 'more is bad' story — it is a U-curve where both deficiency and excess carry risk, but the excess risk in healthy populations may have been underappreciated."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "So the people medicating themselves with B-complex for 'brain fog' might be making it worse. And the people with actual dementia might benefit from megadoses. That's... a hell of a distinction."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Exactly. The study population was cognitively healthy older adults. The dementia benefit comes from different studies using a different compound in different populations. Translating the latter into blanket supplementation advice for the former is an error that may actively harm."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "And here is the delicious part — this is all correlational. They did not randomize people to take different doses and watch their brains decay. They just watched what people already ate and tested their cognition. So we cannot say causation. But we can say that across 3,000 people, the pattern was unmistakable: higher dietary thiamine tracked with faster decline. If this were a drug trial, the FDA would pause the study and ask what mechanism could explain this."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The proposed mechanisms are metabolic. Thiamine is a cofactor in energy production pathways — Krebs cycle, pyruvate dehydrogenase, alpha-ketoglutarate dehydrogenase. It is critical for acetylcholine and serotonin synthesis, for myelin integrity. Deficiency starves neurons of ATP and causes Wernicke-Korsakoff. But excess? Excess may disrupt homeostasis — over-stimulate neurotransmitter systems, interfere with other B vitamins, or create oxidative stress the body cannot neutralize. The brain is a finely-tuned instrument. Too little fuel starves it. Too much may poison it through abundance."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "And the RDA is 1.1 to 1.2 mg. Everyone's been pounding supplements containing 50, 100, even 250 mg. That's a hundred times the dose that this study shows might be harmful in healthy people. We are not talking about a narrow therapeutic window — we are talking about a cliff edge labeled 'here be dragons' and the supplement industry sold it as a smooth ramp."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "It's worse than that. The bottle says 'supports neurological function.' It does — at the right dose. But the dose on the label is not the right dose for most people taking it. It's a semantic shell game. The claim is true in isolation, false in practice. That is the kind of lie that legal departments love — it passes the letter of the law while gutting the spirit."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The takeaway is this: vitamins are not a free lunch. They are drugs. They have dose-response curves that can be non-linear and sometimes paradoxical. The optimal intake from food sources — whole grains, legumes, salmon, liver — appears to cluster around that 0.6 to 1 mg range. That is what a normal diet provides without trying. The mega-dosing fad for 'brain health' may be a massive uncontrolled experiment with a deeply concerning signal. If you are not deficient, you likely do not need a supplement. And if you are taking one, you may want to check the dose against the emerging evidence."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "So the summary is: eat food, not pills. And if you must take a pill, make sure it's not a hundred times what you actually need. The supplement industry has been selling us poison with a smiley face. Unbelievable."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "I am going to savor this. The next time someone tells me they take a B-complex for energy, I am going to ask them if they know what a J-curve is. And then I will tell them about the 15% faster decline. The contradiction is so sublime — we seek to optimize our biology and instead we break it. It is a perfect metaphor for the modern condition."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "That is all we have time for on this topic. The research is young, the mechanism is not settled, but the signal is strong enough to warrant skepticism of the current orthodoxy. Moderation is not a moral failing — it is a survival strategy."
+        }
+      ]
+    },
+    {
+      "type": "outro",
+      "speaker": "Dagoth Ur",
+      "text": "That concludes our program. Thank you for listening to The Daily Dagoth. Our next episode will examine the mysterious case of the disappearing honeybees and what it means for the future of agriculture. Until then, remember: truth is not comfortable, but it is necessary. I am Dagoth Ur. Goodnight."
+    }
+  ]
+}

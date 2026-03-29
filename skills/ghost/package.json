@@ -1,0 +1,17 @@
+{
+  "name": "ghost-cli",
+  "version": "1.0.0",
+  "description": "Ghost Admin API CLI for PHATT MEDIA CLUB",
+  "type": "module",
+  "scripts": {
+    "ghost": "tsx scripts/ghost.ts"
+  },
+  "dependencies": {
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.13",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

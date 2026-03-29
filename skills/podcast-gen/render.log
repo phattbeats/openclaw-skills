@@ -1,0 +1,3 @@
+EP009 render started $(date)
+Input: EP009.json
+Chatterbox TTS endpoint: http://10.0.0.3:8004

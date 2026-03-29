@@ -1,0 +1,14 @@
+{
+  "name": "nextcloud-cli",
+  "version": "1.0.0",
+  "type": "module",
+  "bin": {
+    "nextcloud": "./scripts/nextcloud.ts"
+  },
+  "scripts": {
+    "test": "echo \"Run: npx tsx scripts/nextcloud.ts --help\""
+  },
+  "dependencies": {
+    "commander": "^14.0.3"
+  }
+}

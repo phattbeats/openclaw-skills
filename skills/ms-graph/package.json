@@ -1,0 +1,13 @@
+{
+  "name": "ms-graph",
+  "version": "1.0.0",
+  "description": "Microsoft Graph API CLI for PHATT TECH",
+  "type": "module",
+  "scripts": {
+    "start": "npx tsx scripts/msgraph.ts",
+    "test": "npx tsx scripts/msgraph.ts --json org info"
+  },
+  "dependencies": {
+    "commander": "^13.1.0"
+  }
+}
