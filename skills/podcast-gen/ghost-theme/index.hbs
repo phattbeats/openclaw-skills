@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{meta_title}}</title>
+    <meta name="description" content="{{meta_description}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.6; }
+        a { color: #D4A847; text-decoration: none; }
+        a:hover { color: #f0c96b; }
+        .site-header { background: #111; border-bottom: 1px solid #222; padding: 20px 0; }
+        .site-header .container { display: flex; align-items: center; gap: 15px; }
+        .site-header img { height: 40px; border-radius: 4px; }
+        .site-header h1 { font-size: 1.2rem; font-weight: 700; color: #D4A847; }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+        .post-card { background: #141414; border: 1px solid #222; border-radius: 8px; padding: 30px; margin: 20px 0; transition: border-color 0.2s; }
+        .post-card:hover { border-color: #D4A847; }
+        .post-card h2 { font-size: 1.5rem; margin-bottom: 8px; }
+        .post-card .excerpt { color: #999; margin-bottom: 12px; }
+        .post-card .meta { font-size: 0.85rem; color: #666; }
+        .post-card img { max-width: 100%; border-radius: 6px; margin-bottom: 15px; }
+        .kg-width-wide { max-width: 100%; }
+        .kg-width-full { max-width: 100%; width: 100%; }
+        .pagination { display: flex; justify-content: space-between; padding: 30px 0; }
+        .pagination a { padding: 8px 16px; border: 1px solid #333; border-radius: 4px; }
+        .pagination a:hover { border-color: #D4A847; }
+        footer { text-align: center; padding: 40px 0; color: #444; font-size: 0.85rem; border-top: 1px solid #1a1a1a; margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            {{#if @site.icon}}<img src="{{@site.icon}}" alt="{{@site.title}}">{{/if}}
+            <h1><a href="{{@site.url}}">{{@site.title}}</a></h1>
+        </div>
+    </header>
+
+    <main class="container">
+        {{#foreach posts}}
+        <article class="post-card">
+            {{#if feature_image}}
+            <img src="{{feature_image}}" alt="{{title}}">
+            {{/if}}
+            <h2><a href="{{url}}">{{title}}</a></h2>
+            {{#if custom_excerpt}}
+            <p class="excerpt">{{custom_excerpt}}</p>
+            {{/if}}
+            <div class="meta">
+                <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMM D, YYYY"}}</time>
+                {{#if reading_time}} · {{reading_time}} min read{{/if}}
+            </div>
+        </article>
+        {{/foreach}}
+
+        {{pagination}}
+    </main>
+
+    <footer>
+        <div class="container">
+            &copy; {{date format="YYYY"}} {{@site.title}}. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>

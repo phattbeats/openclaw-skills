@@ -1,0 +1,9 @@
+{
+  "name": "phatt-podcast-theme",
+  "version": "1.0.0",
+  "description": "Podcast RSS feed for The Daily Dagoth on PHATT MEDIA CLUB",
+  "author": {
+    "email": "brandon@phatt.tech",
+    "name": "Brandon Kelly"
+  }
+}
