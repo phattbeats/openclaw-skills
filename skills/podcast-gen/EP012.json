@@ -1,0 +1,532 @@
+{
+  "episode": "EP012",
+  "title": "The Hunger Games",
+  "date": "2026-04-09",
+  "hosts": ["Dagoth Ur", "Rosa", "Jessica"],
+  "intro": "The world is on fire and your food bill is about to get interesting. Welcome back to The Daily Dagoth. I'm Dagoth Ur. With me — Rosa, who I can see has the particular expression of someone who has found something that scares her and is going to tell us about it anyway. And Jessica, who has that glow. That specific glow. Jessica, what did you do.",
+  "outro": "That's the episode. Jessica, I'm going to go stare at a wall now. Rosa, thank you for keeping a single shred of agricultural optimism alive for twenty-six minutes. Dagoth Ur, signing off. Tell your neighbors to check their tomatoes. And maybe start hoarding bread.",
+  "segments": [
+    {
+      "type": "segment",
+      "topic": "Banter — What's Everyone Been Up To?",
+      "lines": [
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Before we start. Rosa. You have that look."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "What look."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The look where you're going to tell us something about the phone book man and we're not going to sleep tonight."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "It's not — okay. So. I found the broadcast schedule."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "You found his actual schedule?"
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Utility district PDF. Public record. He's been at it for eleven months. 1987 phone directory. Top to bottom. Nothing after. He reads the whole thing. And then he starts over."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Eleven months on a single phone book."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "He started in January of last year. He's in the W's now. I did the math. He has four months left. And then —"
+        },
+        {
+          "speaker": "Jessica",
+          "text": "And then he starts over."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "And then he starts over. And there's nothing after. There's no other content. When he finishes the W's, he's just — done. Back to A."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Rosa."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "I know."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "You've been listening to this man for eleven months. You've sent him three letters to a Nevada PO box with no return address. You've invested. And now you've learned that the project has no terminus. That the phone book is infinite."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "I'm aware."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Rosa. Are you alright."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "No. But that's not new."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "For what it's worth — I think he's reading to someone specific. I think he always was. The whole thing is a message to one person, and everyone else is just hearing the static."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "That is either the most comforting or the most devastating interpretation possible."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Both. It's both."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Jessica. You have the other look. The one where you've done something to the tomatoes."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "I haven't done anything to the tomatoes in a week. I've been focusing on the scarf."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "The scarf you're knitting from what exactly?"
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Yarn. It's yarn. I found it in a hollow log near a creekbed. Near Goodsprings. It was already spun, just — waiting."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "And it didn't occur to you that someone might have left it there for a reason."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "It did occur to me. I decided it was free. It's beautiful yarn, Dagoth. The colors shift in low light. I've already done two feet. I'm on the third foot."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Jessica. The last time you found something beautiful in the wasteland, we spent three episodes dealing with the aftermath."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "That was one time."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "The radioactive mushrooms in the NCR outpost."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "They weren't radioactive. They were — psionically active."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "They made the scouts see their dead mothers. In the middle of a perimeter check."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "And they learned valuable lessons about grief."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Three of them couldn't return to duty."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "They were ready to leave anyway. The mushrooms just — accelerated the timeline."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "And the scarf. You've been working on it every day this week?"
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Every day. I had a dream about it. I woke up and kept knitting. I finished the whole third foot before I remembered to eat."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "What was the dream about."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Fields. Big ones. Nothing growing. And someone was walking through them carrying something wrapped in cloth. I couldn't see what it was. But the something wrapped in cloth was important. The scarf is responding to that. The colors are shifting toward brown now. Toward — dried. It's tracking something."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Jessica. You are a grown woman who has survived the wasteland through cunning and what appears to be genuine witchcraft, and I mean that as a description and not an insult. And now you're telling us your scarf is tracking something. While you're dreaming about empty fields."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "I'm just saying what I'm seeing, Dagoth."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "And what I'm seeing is we're about to talk about food prices and now I'm also thinking about empty fields and someone walking through them carrying something wrapped in cloth. Thanks for that, Jessica."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "You're welcome."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "And for me — I went back to the Chamber of the Third Eye. Inside Red Mountain. First time in weeks. I'd been building it up in my head. Four thousand years of accumulated significance. The chamber is where I go when I need to — hear things. See things. Understand things that are larger than the moment."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "And?"
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Nothing. I sat there for an hour. Just sat. The thoughts were not — it was not unpleasant exactly, but there was no — signal. No message. No vision. I left feeling nothing in particular. Which was itself disturbing, because I expected to feel something, and the absence of what I expected was — notable."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "You sat in your special chamber and the special didn't special."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "That is an accurate summary of the situation."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Is that bad? In terms of — your whole thing?"
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "I don't know yet. I've had the chamber for three thousand years. It has never been silent before. Or — it has been silent many times. But I always knew the silence was temporary. That if I waited long enough, something would come. Last week I waited. And I think the silence might be permanent this time. And I'm not sure how I feel about that."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Dagoth."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "I know. I'll sit with it. But I mention it because it connects to what we're discussing today. The difference between systems that are working and systems that appear to be working. Sometimes you can't tell the difference until the difference stops mattering."
+        }
+      ]
+    },
+    {
+      "type": "segment",
+      "topic": "The Strait of Hormuz — What Actually Happened",
+      "lines": [
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Alright. Topic today. And I'll give the context the way I understand it, and then we'll build from there. On February 28th of this year — about six weeks ago — the United States and Israel conducted a joint strike inside Iran. The target was the Supreme Leader. Ali Khamenei. The strike killed him."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "The man they called the \"rational moderate\" for twenty years."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The successor government — or what was left of it — authorized IRGC naval forces to begin attacking commercial shipping in the Strait of Hormuz. Within hours of the strike. They sank several vessels. They mined portions of the shipping lane. Traffic, which normally runs about one hundred and thirty ships per day, collapsed to single digits."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Single digits. As in — less than nine ships a day."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Less than nine ships a day. At peak, the Strait handles twenty percent of the world's oil, fourteen percent of global oil shipments, twenty percent of global LNG, and — this is the part that matters for today's topic — approximately thirty percent of the world's urea, forty-four to fifty percent of global seaborne sulfur, and about twenty-five percent of global ammonia. All of those are nitrogen and phosphate compounds. All of those are the chemical basis of modern agriculture."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Fertilizer components."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Fertilizer components. Exactly. Now — there was a ceasefire announced on April 8th. Yesterday, as of this recording. But the Strait is not open. Iran is still demanding sovereignty. Still mining approaches. Still charging tolls in Chinese yuan. Three to five ships have transited in the last week, with insurance premiums that make the economics marginal at best. The Strait is not functioning as a shipping corridor. It is functioning as a toll booth with a gun."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "And we are — six weeks into this. How much damage has it done to fertilizer markets?"
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Significant. The numbers moved fast. Urea futures on the Gulf coast went from roughly five hundred and sixteen dollars per ton to six hundred and eighty-three. Ammonia up twenty percent. DAP — diammonium phosphate, which is the backbone of phosphorus fertility — up fifteen to twenty-five percent depending on the port. The sulfur problem is the one that nobody is talking about enough, because sulfur is the input for the Moroccan and Florida phosphate rock processing that creates DAP. And Moroccan phosphate operations are now running at roughly half capacity because they cannot source the sulfur they need."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "So the Strait closing didn't just trap the fertilizer. It broke the processing chain that makes the fertilizer usable."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Correct. The sulfur that was supposed to come through the Strait isn't coming. The plants that depend on it to convert phosphate rock into farm-ready fertilizer have had to slow or stop. The price you're paying at the store isn't reflecting the current shortage. It's reflecting the expected future shortage. Because everyone knows the Strait isn't open. And everyone is pricing in a growing gap between what farmers need and what manufacturers can deliver."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "How long can farmers last? If spring planting is coming —"
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The spring planting cycle in the northern hemisphere is approximately six to eight weeks away for the major corn and wheat producing regions. US corn belt, Ukraine, parts of Eastern Europe. These are regions where fertilizer application is not optional. It's the difference between a viable yield and no yield. The agricultural cycle does not negotiate with shipping lane disruptions."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "And there's no way to speed up production. You can't just — open more plants."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Nitrogen fertilizer is produced via the Haber-Bosch process, which requires natural gas as a feedstock and extremely high pressure and temperature as inputs. You cannot reconfigure a Haber-Bosch facility quickly. It takes years and billions of dollars. The existing production capacity is the production capacity. And it was already running near full utilization before this happened, because grain prices were high and farmers were buying."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "So we are entering spring planting season with a supply chain that has been materially disrupted. And the price increases we've seen so far are — what — just the beginning?"
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The market is pricing in a duration assumption. If the Strait reopens within four to six weeks, the spring planting cycle is disrupted but salvageable. Prices stay elevated through the growing season, but the crop comes in. If it lasts longer than eight weeks — which is now the base case for many analysts — you start seeing planted acreage reductions. And that flows directly into food prices in the fall."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "How directly? How fast does fertilizer price become food price?"
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Fertilizer costs represent roughly fifteen to twenty percent of the direct cost of growing corn. That sounds manageable until you remember that margins in commodity agriculture are often two to five percent. A fifty percent fertilizer price increase, which is not out of line with current moves, can turn a marginal operation from profitable to insolvent. And when marginal operations fail, they plant less. And when they plant less, supply contracts. And supply contraction in staple crops compounds through the food system with a delay of roughly six to nine months."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "So we're not paying for it at the grocery store today. We're paying for it at the grocery store in November."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Correct. Agricultural commodity markets are futures markets. The price you see on the shelf reflects what was planted six to nine months ago. What we're experiencing now — the disruption — will show up in retail food prices in the fall. And because staple crops are inputs into processed foods, animal feed, and restaurant menus, the effect is broader than just the produce aisle."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Dagoth. How bad does this get in a worst case? Like — real worst case."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Real worst case — and I want to be precise that this is not the base case, this is the tail — you have a simultaneous disruption in the northern hemisphere spring planting cycle, combined with the existing African swine fever pressures on protein markets, combined with the LNG supply pressures that are also flowing through the Strait. You could see staple crop yields down fifteen to twenty percent in affected regions. Which, because of how the global grain trade works, doesn't just affect the regions that had bad harvests. It affects the global price. Because the grain that didn't get planted in Ukraine or the American Midwest still has to come from somewhere. And \"somewhere\" has a finite capacity to increase production on short notice."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "And that's when you get the 1970s situation. Export restrictions. Countries hoarding supply. The countries that can afford to buy at elevated prices survive. The ones that can't — don't."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The export restriction dynamic is already beginning. There are whispers of India and Vietnam considering domestic stock limits on fertilizer. Indonesia is watching coal markets closely because of the LNG linkage. These are early signals. But the pattern historically is: prices spike, exporting nations restrict exports to protect domestic supply, importing nations panic and overbuy, the overbuy creates artificial scarcity, prices go higher, more countries restrict. The spiral is well-documented from 2008 and from 2022."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "And this is worse than 2022. The Russia-Ukraine disruption was one major exporter going offline. This is a chokepoint going offline, which affects every exporter that routes through it."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Correct. In 2022, Russia and Ukraine together accounted for about thirty percent of global wheat exports. The Strait carries the trade flows from the Gulf producers — Saudi Arabia, UAE, Qatar, Iraq, Iran — plus the trade routes that connect to the Red Sea and the Mediterranean. You are not replacing that routing with anything on short notice. There is no alternate pipeline. There is no strategic reserve sufficient to bridge the gap."
+        }
+      ]
+    },
+    {
+      "type": "segment",
+      "topic": "The Real Shock — Why the Sulfur Story Is the Important One",
+      "lines": [
+        {
+          "speaker": "Dagoth Ur",
+          "text": "I want to spend some time on the sulfur piece. Because this is the part that I think is underreported relative to its significance."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Walk us through it. I know sulfur is involved in phosphate processing, but — why sulfur specifically?"
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Most of the world's phosphate rock — particularly the high-grade stuff from Morocco and the Western Sahara — contains cadmium and other heavy metals that make it unsuitable for direct agricultural use. The industry processes it via something called the \"wet process,\" which uses sulfuric acid to separate the phosphate from the contaminants. Sulfuric acid is made by oxidizing sulfur dioxide. Sulfur dioxide comes from — primarily — processing elemental sulfur. And a very large fraction of the world's seaborne elemental sulfur comes through the Strait of Hormuz. From Gulf state refineries that produce it as a byproduct of oil and gas processing."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "So the Strait closing doesn't just interrupt fertilizer shipments. It interrupts the acid production that makes the phosphate rock usable. Which means the plants that haven't already been hit by sulfur scarcity can't process the rock they already have."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Exactly. The wet process plants in Morocco and Florida are currently running at roughly half capacity because they cannot source sulfur at prices that make the economics work. They can buy sulfur on the spot market, but the spot market price has moved dramatically because the normal supply flow is disrupted. And you cannot run a wet process plant on prayers and hope. The chemistry requires the inputs."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "How concentrated is this? Like — are we talking about one or two plants, or is this a systemic thing?"
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Morocco controls roughly seventy percent of the world's phosphate rock reserves. The Kingdom's phosphate mining and processing complex at Laayoune and Jorf Lasfar is the largest integrated phosphate operation on the planet. They produce about thirty percent of the world's phosphate for export. And their processing depends on sulfuric acid made from Gulf-state sulfur. The supply chain is more concentrated than people realize, because phosphate mining and processing is not equally distributed — it's heavily concentrated in Morocco, Western Sahara, and to a lesser extent Florida. And Florida's Mosaic Company — one of the two largest US phosphate producers — disclosed in their last earnings call that they took a two hundred and fifty million dollar EBITDA hit specifically from sulfur and ammonia input costs. Two hundred and fifty million. In one quarter."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "And Mosaic is one of the biggest players in the world. If they're getting squeezed —"
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Everyone is getting squeezed. CF Industries — which is the largest nitrogen fertilizer producer in the world — hit all-time high stock prices last week because their capacity is running at near-full utilization and the nitrogen they can produce is worth more than it was six weeks ago. They're winning and they're still warning about supply constraints for the spring application season. That tells you how tight the system is."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Wait. CF Industries hit all-time highs. Because of supply constraints. That means investors think prices stay high."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Correct. The market is pricing in a duration assumption. The question everyone is trying to answer is: is this a six-week disruption or a six-month disruption? Because the answer to that question determines whether spring planting happens at normal acreage or reduced acreage. And that determines whether the supply gap is absorbable or structural."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "And nobody knows the answer to that question."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Nobody knows the answer to that question. The geopolitical situation is — unclear. The ceasefire may hold. It may not. Iran has demonstrated a willingness to use the Strait as leverage, which suggests they will continue to extract value from its disruption as long as it remains disrupted. The economic logic of keeping it closed is strong for Iran. The economic logic of reopening it is strong for everyone else. And those two things are in direct conflict with no clear resolution path visible from the outside."
+        }
+      ]
+    },
+    {
+      "type": "segment",
+      "topic": "The Geopolitical Dimension — Col. MacGregor and What He's Saying That Nobody Else Is",
+      "lines": [
+        {
+          "speaker": "Dagoth Ur",
+          "text": "I want to read something that I think is important. There is an analyst — Colonel Douglas MacGregor, who is a former US Army armored cavalry officer and has been a consistent voice on ME affairs for decades. He appeared on a podcast recently — the name of which I will not mention because they don't need the attention — and he said the following."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "He said: quote, \"What you've done is you've essentially created a situation where the global economy is going to take a ten-year setback. We've destroyed the confidence of the investment community in the Gulf. The Strait of Hormuz cannot be assumed to be safe. And if you can't assume the Strait is safe, you can't run just-in-time supply chains through it. Which means every major economy is now rebuilding its strategic reserves, restrategizing its sourcing, and accepting higher costs as the new floor. This is not a temporary disruption. This is the end of an assumption.\""
+        },
+        {
+          "speaker": "Jessica",
+          "text": "The end of an assumption."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The end of an assumption. The assumption being that the Strait of Hormuz is a reliable, open, international shipping lane that the global economy can depend on. That assumption has existed for fifty years. It is now broken. And the breaking of an assumption that fundamental doesn't reset when the shooting stops. It resets when someone spends five to ten years and enormous sums of money building alternate infrastructure. Which will happen. But not in time for this spring planting cycle. Not in time for the food prices that show up in November."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "The investment community in the Gulf. That's the key phrase. Because it's not just — we had a war event, markets will recover. It's that the war event revealed that the premise of the investment was flawed. You can't build a just-in-time global supply chain through a chokepoint controlled by a country that has shown willingness to use it as a weapon. That assumption was always there underneath the returns. It just wasn't being priced."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Correct. And the markets are now pricing the repricing. This is not a supply shock in the conventional sense. It is a repricing of political risk in the Gulf. The political risk was always there. It was just being ignored because ignoring it was profitable. Now that ignoring it is no longer possible, the correction is immediate and large."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "I keep thinking about the fertilizer processing chain. Like — it's not just that the sulfur isn't coming through the Strait. It's that the Moroccan plants knew this was coming maybe two weeks before the public did. They saw the Strait traffic collapse. They knew what was happening to their sulfur supply. So they started front-loading purchases on the spot market. Which moved the sulfur price before the fertilizer price had fully adjusted. It's a cascade. A supply chain cascade."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Which is exactly what the quote from the markets account I was looking at said. EKWU Finance — which is a supply chain analysis account I've been following — described it this way: quote, \"Any one of these disruptions alone would trigger a crisis. Together, they form a systemic shock. The fertilizer shortage, the LNG squeeze, the oil price volatility, and the sulfur cascade are not separate problems. They are the same problem seen from different points on the same supply chain.\" And I think that's the frame that matters."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "It's the same problem from different points on the same supply chain."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Because the Strait of Hormuz is not just a shipping lane. It is the connective tissue of global energy and agricultural input markets. When it degrades, everything degrades at once. And the systems that depend on just-in-time delivery of those inputs have no buffer. Because buffers are inefficient. And inefficiency costs money. And someone decided, thirty years ago, that the probability of the Strait closing was low enough to justify running without a buffer. That calculation has been invalidated. The cost of the calculation will be paid by everyone who eats."
+        }
+      ]
+    },
+    {
+      "type": "segment",
+      "topic": "The Food Price Timeline — What You Should Actually Be Watching",
+      "lines": [
+        {
+          "speaker": "Dagoth Ur",
+          "text": "I want to close the substance with something practical. Because this is a podcast and not a lecture, but also because people should know what to actually pay attention to. Rosa. You're in the supply chain world. What's the timeline from here?"
+        },
+        {
+          "speaker": "Rosa",
+          "text": "So. The way this works — and I deal with this every day, just not at this scale — the retail food price reflects commodity prices from six to nine months ago. So the fertilizer price spike we're seeing now? You're not paying for that at the store today. You're paying for it in October, November, December. The grocery prices you're seeing right now reflect the commodity prices from last fall's harvest, which was before the Strait disruption."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "So we have a window. A window where things feel normal but aren't."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Exactly. The window is six to nine months. That is the lag time between commodity price moves and shelf price moves. And that window is both a blessing and a curse. It's a blessing because it means there's time to act. Policymakers, governments, aid organizations — they can see what's coming. They have six months of runway to build strategic reserves, to negotiate purchase agreements, to move supply to where it's needed before the shortage is fully felt."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "And the curse?"
+        },
+        {
+          "speaker": "Rosa",
+          "text": "The curse is that six months feels like a long time when you're watching commodity prices. And by the time the grocery prices actually spike, the political response window has closed, because it's already baked into the system. You can't plant more corn in October. The decision was made in April. The decision point is now. The action window is right now. And the people who can take the action are governments and large agricultural entities, not individuals at the grocery store."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Which means the next six to eight weeks are the decision window. And most people are not paying attention to fertilizer markets right now. They will be paying attention in October. By which point the decision will already have been made and its consequences already baked in."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "So what do you watch? If you're a normal person who just wants to know if their grocery bill is about to explode. What indicator do you actually look at?"
+        },
+        {
+          "speaker": "Rosa",
+          "text": "DAP and urea futures prices on the Gulf coast. Not the spot prices — the futures. The March 2027 contract for urea. If that contract is still elevated in May, that means the market expects the spring planting cycle to be disrupted. If it comes down, the market expects resolution. That's your real-time signal. It's not perfect, but it's better than guessing."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "And the second indicator — which is the one nobody will tell you to look at but everyone should — is whether any major agricultural producing nation announces export restrictions on fertilizer. India, Vietnam, Indonesia — any of them capping domestic fertilizer prices or restricting exports. That is the signal that the shortage is becoming a crisis. Because when governments start restricting agricultural exports, they are acting on information the public market doesn't have yet. Follow the export restriction announcements. Those are the canary."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Follow the export restrictions. Not the prices. The government reactions to the prices."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Because governments have better intelligence on their own agricultural reserves than anyone else. When Russia restricted wheat exports in 2022, the restriction came before the public understood how tight the market was. The restriction was the signal. The signal is always in the government response."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "And for people who are just — normal people, with normal grocery budgets — there's no real defense. You can't arbitrage fertilizer markets. You can't outbuy a supply chain disruption. All you can do is be aware that the lull you're experiencing right now is a lull. And it's ending."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "One other practical thing. If you have a garden, or any ability to grow anything — now is the time to be thinking about soil prep. Not because it's going to save you money. But because understanding how food actually works at the ground level changes how you read these stories. When you've planted something and watched it grow and understood what it needs and when it needs it — you read a story about nitrogen futures differently. You understand what the futures market is actually describing. The abstraction becomes concrete. And the concrete is always more important than the abstraction."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Dagoth is suggesting you take up gardening as financial risk management."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "I am suggesting that understanding the physical reality of how food is produced is more useful than tracking seventeen different commodity indices. Grow one tomato plant. Watch it need calcium and phosphorus and nitrogen in the right ratios at the right time. And then you'll understand why the DAP price matters. And you'll never dismiss it as an abstraction again."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "I've been thinking about what Jessica said. About the dream. Fields. Nothing growing. Someone walking through carrying something wrapped in cloth."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Yeah."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "And I keep thinking — what if the thing wrapped in cloth is seeds? What if the dream is about the next season? And the reason nothing's growing is because the seeds haven't been planted yet? And the someone walking through is — I don't know. The person who's going to plant them."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "That's either genuinely insightful or you've been listening to the phone book man for too long."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Both. It's both."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "The scarf has shifted toward green again. Just since we started talking. Whatever tracking the dream was doing — it's responding to this. I don't know what that means. But I thought you should know."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "I am aware. And I'm choosing not to think about it very hard, because I already have enough to be concerned about without adding prophetic textile tracking to the list. We are going to end on that sentence. This has been The Daily Dagoth."
+        }
+      ]
+    }
+  ]
+}

@@ -192,22 +192,35 @@ export function registerPages(program: Command) {
     .action(async (projectName, dir, opts) => {
       if (opts.json) (await import('../lib/envelope.js')).setJsonMode(true);
       await run('pages deploy', async () => {
-        // Step 1: Create an upload session
-        const session = await cf.post<{ id: string }>(
-          `/accounts/${ACCOUNT_ID}/pages/projects/${projectName}/deployments`,
-          {}
-        );
-
-        const deploymentId = session.result?.id;
-        if (!deploymentId) throw new Error('No deployment ID returned from session creation');
-
-        // Step 2: Upload files as multipart
+        // Step 1: Build manifest + upload session
         const files = await getAllFiles(dir);
         if (!files.length) {
           outputErr('No files found in directory', 'Ensure the directory is not empty');
           return;
         }
 
+        const manifest: Record<string, { digest: string; size: number }> = {};
+        for (const filePath of files) {
+          const relPath = relative(dir, filePath);
+          const content = await readFile(filePath);
+          const buf = Buffer.from(content);
+          const { createHash } = await import('crypto');
+          const digest = 'sha256:' + createHash('sha256').update(buf).digest('hex');
+          manifest[relPath] = { digest, size: buf.length };
+        }
+
+        const manifestStr = JSON.stringify(manifest);
+        const sessionForm = new FormData();
+        sessionForm.append('manifest', manifestStr);
+        const session = await cf.postForm<{ id: string }>(
+          `/accounts/${ACCOUNT_ID}/pages/projects/${projectName}/deployments`,
+          sessionForm
+        );
+
+        const deploymentId = session.result?.id;
+        if (!deploymentId) throw new Error('No deployment ID returned from session creation');
+
+        // Step 2: Upload files as multipart
         const form = new FormData();
         for (const filePath of files) {
           const relPath = relative(dir, filePath);

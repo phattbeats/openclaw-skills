@@ -1,0 +1,672 @@
+{
+  "episode": "EP011",
+  "title": "The Hole",
+  "date": "2026-04-07",
+  "hosts": ["Dagoth Ur", "Rosa", "Jessica"],
+  "intro": "The world is on fire and your retirement is a lie. Welcome back to The Daily Dagoth. I'm Dagoth Ur. With me: Rosa. And Jessica, who I can already see vibrating at a frequency that suggests she has found something she was not supposed to find.",
+  "outro": "That's the episode. Jessica, I need to go sit in a dark room now. Rosa, thank you for keeping a single shred of optimism alive for twenty-six minutes. Dagoth Ur, signing off. Share this one. Especially to anyone who believes their insurance policy is an asset class.",
+  "segments": [
+    {
+      "type": "segment",
+      "topic": "Opening — The Thing Nobody Is Looking At",
+      "lines": [
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Jessica. What did you find."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Okay so — Nick Nemeth. Mispriced Assets Substack. He dropped part two of 'No More Boomer Communism' and I have been sitting with this for four days and I need everyone to know: it is worse than part one."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Everything is worse than everything now. That's just the news cycle."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Rosa, I know. But this is structurally worse. Part one was about private credit. The thing everyone's watching. Part two — Nick is saying private credit is not the main event. It's the match. The actual bomb is insurance."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Nick called it the trigger versus the hole. Everyone is watching the fuse. The building is somewhere else."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Hold on. The boring insurance companies? The ones with the print brochures and the waiting rooms and the guy at the counter who asks about your beneficiaries? Those are the systemic risk?"
+        },
+        {
+          "speaker": "Jessica",
+          "text": "The life and annuity industry specifically. Ten trillion dollars in assets. Ten trillion. Larger than the entire US banking system before 2008. And the cushion keeping the lights on — the actual surplus — is six hundred and fifty-eight billion dollars. Six point five percent margin."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Ten trillion in assets. Less than seven hundred billion in actual money behind it. That is not a financial institution. That is a confidence trick with better typography."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Six point five percent."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "And that is before you account for affiliated reinsurance. Which — okay, I need to explain this part because it's where it gets — it's good. It's an elegant hack."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Jessica. You said 'good' and 'elegant hack' in the same sentence about a fraud mechanism."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "I said it was elegant. It is elegant. From a certain angle. Here's how it works: an insurance company wants its balance sheet to look healthier than it is. So it creates — pays a small premium to — a reinsurance company it owns entirely. A captive. That captive issues an XOL contract. Excess of loss. The contract says: if our assets drop below a certain level, the captive covers the loss."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "So they're insuring themselves against their own failure."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "They are insuring themselves against their own failure and then showing the policy as an asset on the balance sheet."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The liability disappears. Replaced by a document that says the problem has been solved. The problem has not been solved. The money does not exist. The regulator looks at the document and says looks fine to me."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Is there a strike price? Like, at what point does this actually pay out?"
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Rosa. You're going to hate this."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Tell me anyway."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Most of these XOL contracts have a negative strike. Meaning the assets would have to go negative before the coverage activates. Negative five dollars."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "That is not insurance. That is a participation trophy."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "And this is not one bad actor."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Athene. Equitable. Lincoln National. MetLife. Prudential. Brookfield. All doing it. The entire industry is running on reinsurance that is, in the charitable interpretation, inadequate. In the accurate interpretation —"
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Fraudulent."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "I was going to say creative accounting but yes. That."
+        }
+      ]
+    },
+    {
+      "type": "segment",
+      "topic": "The Numbers Are The News",
+      "lines": [
+        {
+          "speaker": "Rosa",
+          "text": "Okay. How big is the hole? Just give me the number."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "One point five trillion dollars in affiliated reinsurance across the US life and annuity industry. Nick's researcher — Tom Gober, forensic accountant, forty-two years, time undercover with the FBI — he used NAIC statutory data compiled by SNL Financial. One point five trillion."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Against a total capital surplus of six hundred and fifty-eight billion."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Which means affiliated reinsurance is two hundred and thirty-five percent of the actual surplus."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "I'm sorry. Two hundred and thirty-five percent of the actual — how is that even possible on paper?"
+        },
+        {
+          "speaker": "Jessica",
+          "text": "It's possible because no one is auditing it. If you stripped the affiliated reinsurance off every balance sheet simultaneously — not a crisis, just a correction — twenty-nine of the top thirty US life and annuity insurers would be insolvent."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The thirtieth is probably New York Life. They're actually mutual. They're just old and scared of everything."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Twenty-nine of thirty. And I own some of these companies. In my retirement account. I just realized I own some of these companies."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Rosa, everyone owns these companies. They're investment grade. They pay dividends. Your target-date fund owns them."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "I hate that you're right."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The NAIC has rules. Fifty percent of surplus, or ten percent of assets. Whichever is lower. That's the legal cap on affiliated reinsurance."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Athene is running at twenty-six times the legal maximum."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Twenty-six times —"
+        },
+        {
+          "speaker": "Jessica",
+          "text": "They got Iowa and Arizona to sign waivers. Two state commissioners. That is the regulatory response to discovering the largest accounting fraud in US history. They found two friendly people and got permission."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Please sir may we have permission."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "That is literally the quote from the video. Nick used those words. Please sir may we have permission."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "And the ratings agencies?"
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Athene has a double-A rating. MetLife has a double-A rating. Investment grade. On companies that, under honest accounting, would be in receivership."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "And the ratings agencies are paid by the companies they're rating."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Which does not appear in their marketing materials."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "So we have fraudulent accounting, captured regulators, compromised ratings agencies. What's the actual mechanism that breaks this? Because if it's this bad and still standing, something is holding it up."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Steve Eisman. Yes, that Steve Eisman. He went on CNBC two weeks ago and called this the biggest short of his career."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The stock went up after he said it."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "The stock went up."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "The man who called Enron before anyone said fraud — his career-defining short — and the stock goes up."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "That tells you the CDS market does not exist."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Credit default swaps on insurance companies. There's no liquid underlying. No clear reference instrument. Eisman is trying to build a book — MetLife at ninety-three bid on the five-year, Lincoln National at one-fifty-five. He's trying to create a vehicle to bet against this. And the prime brokers won't build it."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Because if the vehicle exists, someone has to explain why the double-A rated companies underneath it are worth less than par."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "So the problem isn't that the truth is hidden. The problem is everyone who could act on it is also holding the thing that blows up if they do."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Rosa."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "What."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "That was really good."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "She stole your bit."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "I know. I'm not happy about it."
+        }
+      ]
+    },
+    {
+      "type": "segment",
+      "topic": "The Brookfield Example — A Real Case Study",
+      "lines": [
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Is there a concrete example? Something with actual numbers."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Oh, I have something with actual numbers. Brookfield. They acquired American Equity Investment Life — life insurance company, roughly eight billion in assets. Created three captive reinsurance subsidiaries. Very standard. Very normal."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Very normal so far."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "One of them — AEL Re Vermont — shows an XOL asset of one point four eight billion dollars on Brookfield's balance sheet."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Okay."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "The premium they paid to create it was eleven point six million dollars."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Eleven million dollars."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Sixty basis points. Creates the appearance of one point four eight billion in coverage. Now, the XOL contract — the way these work — it covers losses below a certain threshold, but most of them have a negative strike, meaning the assets would have to go negative before the coverage actually — I'm losing people already, aren't I."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "You lost me at eleven million dollars creating the appearance of one point four eight billion. I'm still there."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Let me take that one. The strike price was negative five dollars. Meaning this coverage only activates if American Equity goes to zero. At which point the counterparty is also bankrupt. This is not insurance. That is a participation trophy."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Brookfield did not invent this. Nick specifically says in the video: they're not that guy. They didn't originate this scheme. They just participated in it with great enthusiasm."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Which is the most honest thing anyone has said in this episode."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Where's the money actually sitting? If it's not on the balance sheet, where is it?"
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Bermuda. Cayman Islands. Barbados. Ireland."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Places with no US regulatory jurisdiction."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Correct. No US court can subpoena it. They can write whatever they want on the balance sheet and no one forces the question."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "And US courts can't reach it."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Cannot reach it."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Nick's phrase — I love this phrase — he says the money does not have to exist. As long as nobody forces the question, it doesn't."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The offshore structure is not a tax optimization. It is a visibility optimization. For fraud."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "For fraud."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "For fraud."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Now here's the part I find really funny. The growth of affiliated reinsurance is being driven by the weakest balance sheets. Because only the companies that are in trouble need to move liabilities offshore. The healthy ones don't need to."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The growth in affiliated reinsurance is a canary in the coal mine."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "The sicker the company, the more creative the accounting."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "And nobody is connecting those two facts."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Nobody is connecting those two facts because everyone connecting them would have to explain why they're not doing anything about it."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Including the ratings agencies."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Including the ratings agencies."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Including the ratings agencies."
+        }
+      ]
+    },
+    {
+      "type": "segment",
+      "topic": "The Trigger — How It Actually Unwinds",
+      "lines": [
+        {
+          "speaker": "Rosa",
+          "text": "So how does it break? Walk me through the actual mechanism."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "It starts with what everyone's already watching — private credit defaults accelerating. That's the trigger. Defaults go up, mark-to-market losses hit the balance sheets. Companies that were barely holding on start showing cracks."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Then the ratings agencies, who should have downgraded these companies years ago, finally act. A downgrade to triple-B minus sounds abstract. What it actually means is capital calls from the PE funds. Because the PE funds have contractual provisions that require the insurance company to maintain certain capital ratios. Downgrade hits, capital call goes out, they have to raise money immediately."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "To raise money they sell assets."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "In an illiquid market, selling assets fast means fire-sale prices."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Fire-sale prices trigger more downgrades. More downgrades trigger more capital calls. And then —"
+        },
+        {
+          "speaker": "Jessica",
+          "text": "And then you hit the XOL assets. The ones that were supposed to cover the losses. The ones with the negative five dollar strike prices. They don't cover anything. The capital reserves were phantom."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "And now you have a ten trillion dollar industry with no cushion, and the losses flow straight to the state guarantee funds."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "State guarantee funds. Those are the things that backstop insurance policies if a company fails. They're funded by — ?"
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Nothing. Pre-funded balance is zero. Unlike FDIC insurance, which has a pre-funded deposit insurance fund, state life insurance guarantee funds have no money set aside. When the claims come in, the state pays out of general revenue."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Which is another way of saying —"
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Your taxes. Or the Fed creates the money. Same destination, different printing press."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Jerome Powell, to his partial credit, admitted in the two thousand twenty-four Financial Stability Report that the growth of private credit poses risks to financial stability. He said yes. He just declined to specify the size of the hole. Which is a bit like pointing at your house from across the street and saying yes there is a fire, we are not going to say which room."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "I think about that quote a lot."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Of course you do."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "He knows. He knows the size of the hole. He just can't say it without causing the thing he's describing."
+        }
+      ]
+    },
+    {
+      "type": "segment",
+      "topic": "Burry, Chanos, Eisman — The Smart Money Speaks",
+      "lines": [
+        {
+          "speaker": "Jessica",
+          "text": "Okay but. Burry posted. Michael Burry. The Big Short guy. He posted about insurance. Nick quotes the tweet directly: every time anyone looked, Scottish Re, AIG, it's all the same. There is nothing there."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Burry doesn't tweet before he does the work. If he's posting, he's already positioned."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Which means the short is already on. He's not announcing a trade. He's leaving a record. The way someone leaves a record when they've already pulled the fire alarm and want to make sure people know they didn't start the fire."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "He's covered."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "He's covered and he's telling you where to look. That's the Burry move. He always gives you just enough to find it yourself."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Jim Chanos — who called Enron before anyone was willing to say the word fraud — called this the golden age of fraud."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "And he's not wrong. The private credit boom gave everyone cover. PE firms collecting fees, insurance companies collecting premium, ratings agencies collecting rating fees, regulators collecting salaries. Nobody had an incentive to look."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "The fraud was hiding in the Bermudas and Caymans where no US court could reach it."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Where the accounting standards don't require the same disclosures as domestic filings."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "And where everyone involved had a financial reason to leave it alone."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "So the choice is between fraud and regulatory failure."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Those are the two options on the menu."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The version where this unravels on purpose with federal oversight, and the version where it unravels on its own and we discover the hole is three times deeper than anyone admitted."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Wonderful. Both options are great."
+        }
+      ]
+    },
+    {
+      "type": "segment",
+      "topic": "The Boomer Communism Frame",
+      "lines": [
+        {
+          "speaker": "Jessica",
+          "text": "Let's talk about the title. 'No More Boomer Communism.' What does that actually mean beyond the obvious media appeal."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Nick defines it precisely. Boomer communism is a system where private parties collect the gains and the public absorbs the losses. That was defined benefit pensions — raided, underfunded, backstopped by the government. That was savings and loan associations in the 1980s. That was the mortgage crisis in 2008. That was Social Security, perpetually one congressional fix away from collapse."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Every generation has had at least one encounter with this arrangement."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The baby boomers designed the entire system."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "And insurance is the last unaudited defined-benefit machine still running."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "The last one where the public pays for private losses and nobody's had the political will to look."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Banks were broken and reformed — imperfectly, but visibly. Hedge funds got Archegosed in 2021. Private equity has been getting scrutiny for years. Insurance has been invisible. And what Tom Gober found is that the accounting is worse than anything we found in banking. Not because insurance people are more dishonest than bankers."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Because they had more time to build the architecture."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Exactly."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The policyholders bear the actuarial risk. The PE firms collect the management fees. The state backstops the losses. The Fed prints the money. And every link in that chain says the next link has the money."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Until you pull the thread and discover the whole thing is held together with XOL contracts that have negative five dollar strike prices and eleven million dollar premiums."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Nick says the only way this ends well is if someone in power decides to look."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "A single federal investigation. One congressional hearing with subpoena power. Crack open the captives, force mark-to-market valuation on the affiliated reinsurance."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "The NAIC already has the data. SNL Financial already compiles it. Gober already used it. The information is not hidden. It is simply not being acted on."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "And right now there's no evidence anyone in power wants to look."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Correct. Because looking would require admitting the problem is large enough to matter. And that would require doing something about it. And doing something about it means telling a generation of retirees that the system they were promised was a rough approximation of the truth."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Nobody in Washington wants to have that conversation until they absolutely have to have it."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Which means they're hoping it solves itself."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "Which means they're hoping it solves itself. Which it won't."
+        }
+      ]
+    },
+    {
+      "type": "segment",
+      "topic": "The Closing Question — Is There a Trade?",
+      "lines": [
+        {
+          "speaker": "Rosa",
+          "text": "So what's the play here? For anyone listening who's not Steve Eisman. What's the actual action item."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "For most people: know what you actually own. If you have a variable annuity, an indexed annuity, any product where the insurance company is taking your money and putting it in private credit or CLOs — you are not holding a bond. You are holding a promise from a company that may be insolvent in any meaningful sense of the word."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "If you work at a state insurance guarantee fund, or you interact with state pension systems, this is your problem more directly than most. The state backstop is not a blank check. It is a line item in a budget that does not have the money."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "When the calls come in, the options are: raise taxes, cut services, or ask the federal government."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "None of which are fast or popular."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "None of which work quickly or equitably in a crisis, historically speaking."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "And for the trading desk crowd — the CDS market doesn't exist yet in any usable form. Eisman is trying to build it. If he succeeds, you can buy protection on MetLife or Lincoln National the same way you bought protection on mortgage-backed securities in 2007."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "If he doesn't succeed?"
+        },
+        {
+          "speaker": "Jessica",
+          "text": "If he doesn't succeed, the unraveling will be visible in other ways first. Watch for downgrade cascades in the PE-backed insurers. Watch for the ratings agencies being forced to explain their double-A marks on companies that can't produce honest balance sheets."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "The canary won't sing quietly."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "So the answer for regular people is: you can't trade this, you can't short this, you probably can't see the full scope of it."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "You can just know that it's there."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "You can know that it's there. You can not be surprised when the story breaks. And you can ask the question that Nick is asking, that Eisman is asking, that Burry is apparently positioning around: what happens when the money is supposed to be real, and nobody can find it?"
+        },
+        {
+          "speaker": "Jessica",
+          "text": "Because that question has an answer. The answer is not good. And the answer is not quiet."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "Nick's last line in the video — he says: I may be vigorous but I'm not that smart. And then he says: Michael, you can figure this out. Take your sweet time."
+        },
+        {
+          "speaker": "Dagoth Ur",
+          "text": "He's talking to Burry."
+        },
+        {
+          "speaker": "Jessica",
+          "text": "He's talking to Burry. He's saying: I found it. I showed you where to look. Now it's your move."
+        },
+        {
+          "speaker": "Rosa",
+          "text": "And Burry's move is apparently already made."
+        }
+      ]
+    }
+  ]
+}

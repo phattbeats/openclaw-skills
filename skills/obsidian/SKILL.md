@@ -333,7 +333,7 @@ rm -f /tmp/obsidian-convert.py /tmp/obsidian-ingest-note.md /tmp/yt-ingest*
 - For images: pass file path (not URL) to markitdown unless it's a direct image URL.
 - For ZIP files: extract, iterate contents, ingest each file separately.
 - For audio: markitdown uses Whisper. If it fails, fall back to the `openai-whisper-api` skill.
-- Use `stepfun/step-3.5-flash:free` for analysis subagents (cheap/free, fast).
+- Use `openrouter/nvidia/nemotron-3-super-120b-a12b:free` for analysis subagents (cheap/free, fast).
 - Use `x-ai/grok-4.1-fast` for documents exceeding 150k tokens (2M context window).
 
 ### Batch Ingestion

@@ -129,7 +129,19 @@ If you try a blocked endpoint, you will get HTTP 403.
 1. Find the container by name
 2. Check the `phattclaw.managed` label
 3. If managed: perform the action, report the result
-4. If not managed: tell the user and explain they can add the label via Unraid Docker tab → Edit → Advanced View → Add Label
+4. If not managed: explain the steps below to add the label
+
+## Making Containers Manageable by phatt-claw
+
+Only containers with the label `phattclaw.managed=true` can be started, stopped, or restarted through phatt-claw. This is a safety gate to prevent accidental infrastructure damage.
+
+**To add the label via Unraid Docker UI:**
+1. Docker tab → Find the container → **Edit**
+2. Toggle **Advanced View** (top right of the edit modal)
+3. Find **Add Label** → add:
+   - Key: `phattclaw.managed`
+   - Value: `true`
+4. Save. The container is now manageable through phatt-claw.
 
 ## Container Name Reference
 
