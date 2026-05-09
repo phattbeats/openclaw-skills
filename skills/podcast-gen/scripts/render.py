@@ -29,9 +29,9 @@ EL_VOICES  = {
 # ── Chatterbox config ──────────────────────────────────────────────────────────
 CB_HOST   = os.environ.get("CHATTERBOX_URL", "http://10.0.0.2:8004")
 CB_VOICES = {
-    "dagoth":  "dagoth ur 2.wav",
-    "rosa":    "Rosa.wav",
-    "jessica": "Melina_original.wav",  # ethereal, unsettling — swap if Brandon prefers another
+    "dagoth":  "Thomas.wav",     # deep, measured — substitute Everett or Michael if too flat
+    "rosa":    "Elena.wav",      # sharper, expressive
+    "jessica": "Abigail.wav",    # theatrical, clear
 }
 # Per-host generation settings (exaggeration, cfg_weight)
 # exaggeration: how expressive (0.3 flat → 1.0 theatrical)
@@ -89,9 +89,10 @@ def synth_elevenlabs(text, host, output_path):
     if not voice_id:
         print(f"  ✗ Unknown host: {host}")
         sys.exit(1)
-    # Strip emotion tags — ElevenLabs doesn't support them
+    # Strip emotion/punctuation tags — ElevenLabs doesn't support them
     import re
-    clean_text = re.sub(r'\[[^\]]+\]', '', text).strip()
+    clean_text = re.sub(r'\[[^\]]+\]', '', text).strip()  # [tag]
+    clean_text = re.sub(r'\([^)]+\)', '', clean_text).strip()  # (tag)
 
     url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
     payload = json.dumps({
@@ -135,43 +136,33 @@ def synth_chatterbox(text, host, output_path):
         headers={"Content-Type": "application/json"}
     )
 
-    # Retry loop: 3 attempts with exponential backoff
-    max_retries = 2  # only 2 attempts to avoid hanging too long
-    for attempt in range(max_retries):
-        try:
-            with urllib.request.urlopen(req, timeout=1800) as resp:  # 30 min per segment
-                raw = resp.read()
-                wav_path = output_path.replace(".mp3", ".wav")
-                with open(wav_path, "wb") as f:
-                    f.write(raw)
-                mp3_path = output_path
-                host_speed = SPEED.get(host, 1.0) if isinstance(SPEED, dict) else SPEED
-                atempo_flag = f'-af "atempo={host_speed}"' if host_speed != 1.0 else ''
-                ret = os.system(f'/root/.openclaw/utilities/ffmpeg/ffmpeg -y -i "{wav_path}" {atempo_flag} -q:a 4 "{mp3_path}" -loglevel quiet 2>/dev/null')
-                if ret != 0:
-                    mp3_path = wav_path
-                    output_path = wav_path
-                else:
-                    os.remove(wav_path)
-                return os.path.getsize(mp3_path), mp3_path
-        except Exception as e:
-            # Clean up partial WAV if it exists
-            wav_tmp = output_path.replace(".mp3", ".wav")
-            if os.path.exists(wav_tmp):
-                try:
-                    os.remove(wav_tmp)
-                except:
-                    pass
-            if attempt < max_retries - 1:
-                delay = (attempt + 1) * 2  # 2s, 4s, 6s
-                print(f"  ⚠ Chatterbox attempt {attempt+1}/{max_retries} failed: {e}. Retrying in {delay}s...")
-                time.sleep(delay)
-                continue
+    # Single attempt with a hard timeout — if it hangs, fall through to ElevenLabs
+    try:
+        with urllib.request.urlopen(req, timeout=300) as resp:  # 5 min max
+            raw = resp.read()
+            wav_path = output_path.replace(".mp3", ".wav")
+            with open(wav_path, "wb") as f:
+                f.write(raw)
+            mp3_path = output_path
+            host_speed = SPEED.get(host, 1.0) if isinstance(SPEED, dict) else SPEED
+            atempo_flag = f'-af "atempo={host_speed}"' if host_speed != 1.0 else ''
+            ret = os.system(f'/root/.openclaw/utilities/ffmpeg/ffmpeg -y -i "{wav_path}" {atempo_flag} -q:a 4 "{mp3_path}" -loglevel quiet 2>/dev/null')
+            if ret != 0:
+                mp3_path = wav_path
+                output_path = wav_path
             else:
-                print(f"  ✗ Chatterbox failed after {max_retries} attempts: {e}")
-                return None
-
-    return None
+                os.remove(wav_path)
+            return os.path.getsize(mp3_path), mp3_path
+    except Exception as e:
+        # Clean up partial WAV if it exists
+        wav_tmp = output_path.replace(".mp3", ".wav")
+        if os.path.exists(wav_tmp):
+            try:
+                os.remove(wav_tmp)
+            except:
+                pass
+        print(f"  ⚠ Chatterbox failed: {e} — falling back to ElevenLabs")
+        return None  # signals caller to retry with ElevenLabs
 
 
 # ── Main ───────────────────────────────────────────────────────────────────────
@@ -211,18 +202,20 @@ def main():
     os.makedirs(segments_dir, exist_ok=True)
 
     with open(script_path) as f:
-        raw_lines = json.load(f)
+        data = json.load(f)
+        script = data["script"] if isinstance(data, dict) and "script" in data else data
 
     # Merge consecutive same-host lines into one TTS chunk (reduces seams)
+    raw_count = len(script)
     lines = []
-    for line in raw_lines:
+    for line in script:
         if lines and lines[-1]["host"] == line["host"]:
             lines[-1]["text"] += " " + line["text"]
         else:
             lines.append({"host": line["host"], "text": line["text"]})
 
     print(f"Backend: {BACKEND.upper()}")
-    print(f"Rendering {len(lines)} chunks ({len(raw_lines)} original lines)...\n")
+    print(f"Rendering {len(lines)} chunks ({raw_count} original lines)...\n")
 
     # Checkpoint file — tracks completed segments for resume
     checkpoint_path = os.path.join(output_dir, ".render_checkpoint.json")
@@ -250,7 +243,16 @@ def main():
         if BACKEND == "chatterbox":
             result = synth_chatterbox(text, host, seg_path)
             if result is None:
-                print(f"  ⚠ Segment {i} failed, will be re-recorded later")
+                # Chatterbox failed — retry once with ElevenLabs
+                print(f"  → Chatterbox failed, retrying with ElevenLabs...")
+                try:
+                    size = synth_elevenlabs(text, host, seg_path)
+                    print(f"  ✓ {size:,} bytes (ElevenLabs fallback)")
+                    completed.add(i)
+                    with open(checkpoint_path, "w") as f:
+                        json.dump(sorted(completed), f)
+                except Exception as el_err:
+                    print(f"  ✗ ElevenLabs fallback also failed: {el_err}")
             else:
                 size, actual_path = result
                 print(f"  ✓ {size:,} bytes")
@@ -313,71 +315,132 @@ def main():
     # ── Concatenate: intro + segments + outro via ffmpeg ────────────────────────
     output_path = os.path.join(output_dir, "podcast.mp3")
     base_dir    = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    # ── Pre-encode quality check: halt if any segments are missing ───────────────
+    missing_segments = [i for i, line in enumerate(lines)
+                       if not os.path.exists(os.path.join(segments_dir, f"{i:03d}_{line['host']}.mp3"))]
+    if missing_segments:
+        print(f"\n❌ BLOCKING: {len(missing_segments)} segment(s) missing: {missing_segments}")
+        print("  Re-render the missing segments and re-run render.py to continue.")
+        return False
+
+    # ── Assemble: intro + segments + outro via WAV intermediates ────────────────
+    # (avoids MP3 concat decoder errors from mixed-rate source files)
+    print(f"\n♪ Assembling {len(lines)} segments...")
+    output_path = os.path.join(output_dir, "podcast.mp3")
+    base_dir    = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     intro_path  = os.path.join(base_dir, "assets", "intro.mp3")
     outro_path  = os.path.join(base_dir, "assets", "outro.mp3")
     ffmpeg_bin  = "/root/.openclaw/utilities/ffmpeg/ffmpeg"
+    temp_wavs   = os.path.join(output_dir, "_wavs")
+    os.makedirs(temp_wavs, exist_ok=True)
 
-    # Build ordered file list for concat
-    all_files = []
+    def run_cmd(cmd):
+        ret = os.system(cmd)
+        if ret != 0:
+            print(f"  ⚠ Command failed (exit {ret}): {cmd[:80]}")
+        return ret == 0
+
+    # Convert each segment to normalized WAV at 44.1k stereo
+    for idx, line in enumerate(lines):
+        seg_path = os.path.join(segments_dir, f"{idx:03d}_{line['host']}.mp3")
+        wav_path = os.path.join(temp_wavs, f"{idx:03d}.wav")
+        run_cmd(f'{ffmpeg_bin} -y -i "{seg_path}" -ar 44100 -ac 2 -af "loudnorm=I=-16:TP=-1:LRA=11:print_format=summary" "{wav_path}" 2>/dev/null')
+
+    # Validate all WAVs exist before attempting concat (fail fast, don't silently produce garbage)
+    concat_wav = os.path.join(output_dir, "_concat_raw.wav")
+    wav_list   = os.path.join(output_dir, "_wavs.txt")
+    wavs_to_concat = []  # (label, path)
+
     if os.path.exists(intro_path):
-        all_files.append(intro_path)
-        print(f"\n♪ Intro prepended")
-    # Add segments in order by scanning segments_dir
-    for i, line in enumerate(lines):
-        seg_path = os.path.join(segments_dir, f"{i:03d}_{line['host']}.mp3")
-        if os.path.exists(seg_path):
-            all_files.append(seg_path)
-        else:
-            print(f"  ⚠ Segment {i} missing — skipping")
+        intro_wav = os.path.join(temp_wavs, "_intro.wav")
+        run_cmd(f'{ffmpeg_bin} -y -i "{intro_path}" -ar 44100 -ac 2 "{intro_wav}" 2>/dev/null')
+        wavs_to_concat.append(("_intro", intro_wav))
     if os.path.exists(outro_path):
-        all_files.append(outro_path)
-        print(f"♪ Outro appended")
+        outro_wav = os.path.join(temp_wavs, "_outro.wav")
+        run_cmd(f'{ffmpeg_bin} -y -i "{outro_path}" -ar 44100 -ac 2 "{outro_wav}" 2>/dev/null')
+        wavs_to_concat.append(("_outro", outro_wav))
+    for idx in range(len(lines)):
+        wavs_to_concat.append((f"{idx:03d}", os.path.join(temp_wavs, f"{idx:03d}.wav")))
 
-    # Write ffmpeg concat list
-    concat_list = os.path.join(output_dir, "_concat.txt")
-    with open(concat_list, "w") as cl:
-        for f in all_files:
-            cl.write(f"file '{f}'\n")
+    missing = [(lbl, path) for lbl, path in wavs_to_concat if not os.path.exists(path)]
+    if missing:
+        print(f"\n❌ BLOCKING: {len(missing)} WAV(s) missing before concat:")
+        for lbl, path in missing:
+            print(f"   [{lbl}] {path}")
+        print("  Fix the missing files and re-run render.py to continue.")
+        return False
 
-    # Run ffmpeg concat + embed ID3 tags + album art
+    # Write _wavs.txt with RELATIVE paths (immune to folder renames)
+    with open(wav_list, "w") as wl:
+        for lbl, path in wavs_to_concat:
+            # Relative path: '_wavs/000.wav' — resolved from output_dir
+            rel = os.path.join("_wavs", os.path.basename(path))
+            wl.write(f"file '{rel}'\n")
+
+    ret = run_cmd(f'{ffmpeg_bin} -y -f concat -safe 0 -i "{wav_list}" -c:a pcm_s16le "{concat_wav}" 2>/dev/null')
+    if not ret:
+        print("\n❌ ffmpeg concat failed. Check that _wavs.txt has correct relative paths.")
+        return False
+
+    # Encode: loudnorm + MP3 + metadata + cover
+    covers_dir  = os.path.join(base_dir, "assets", "covers")
+    ep_cover    = os.path.join(covers_dir, f"{int(ep_num):03d}-cover.png") if ep_num else None
+    cover_path  = ep_cover if ep_cover and os.path.exists(ep_cover) else os.path.join(base_dir, "assets", "cover.png")
+
     meta_flags = (
         f'-metadata title="{ep_title}" '
         f'-metadata artist="{ARTIST}" '
         f'-metadata album_artist="{ARTIST}" '
         f'-metadata album="{ALBUM}" '
         f'-metadata track="{ep_num}" '
-        f'-metadata genre="Podcast"'
+        f'-metadata genre="Podcast" '
+        f'-metadata date="{folder_name[-10:]}"'
     )
-    # Use per-episode cover if available, fall back to base cover
-    covers_dir = os.path.join(base_dir, "assets", "covers")
-    ep_cover_path = os.path.join(covers_dir, f"{int(ep_num):03d}-cover.png")
-    cover_path = ep_cover_path if os.path.exists(ep_cover_path) else os.path.join(base_dir, "assets", "cover.png")
-    cover_source = "per-episode" if os.path.exists(ep_cover_path) else "base"
-    if os.path.exists(cover_path):
-        # Two-input ffmpeg: concat audio + cover image
+
+    print(f"  🎨 Album cover: {os.path.basename(cover_path) if os.path.exists(cover_path) else 'none found'}")
+
+    if os.path.exists(concat_wav):
         ret = os.system(
-            f'{ffmpeg_bin} -y -f concat -safe 0 -i "{concat_list}" -i "{cover_path}" '
-            f'-map 0:a -map 1:v -c:a libmp3lame -q:a 4 -c:v mjpeg -id3v2_version 3 '
-            f'-metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)" '
+            f'{ffmpeg_bin} -y -i "{concat_wav}" '
+            f'-af loudnorm=I=-16:TP=-1:LRA=11 '
+            f'-c:a libmp3lame -q:a 0 '
             f'{meta_flags} "{output_path}" -loglevel quiet 2>/dev/null'
         )
-        print(f"🎨 Album art embedded: {cover_source} cover ({os.path.basename(cover_path)})")
+        if ret == 0 and os.path.exists(cover_path):
+            tagged = output_path + ".tagged.mp3"
+            r2 = os.system(
+                f'{ffmpeg_bin} -y -i "{output_path}" -i "{cover_path}" '
+                f'-map 0:a -map 1:v -c:a copy -c:v mjpeg '
+                f'-id3v2_version 3 '
+                f'-metadata:s:v title="Album cover" '
+                f'-metadata:s:v comment="Cover (front)" '
+                f'"{tagged}" -loglevel error 2>/dev/null'
+            )
+            if r2 == 0:
+                os.replace(tagged, output_path)
+                print(f"  🎨 Album art embedded")
     else:
-        ret = os.system(
-            f'{ffmpeg_bin} -y -f concat -safe 0 -i "{concat_list}" '
-            f'-c:a libmp3lame -q:a 4 {meta_flags} "{output_path}" -loglevel quiet 2>/dev/null'
-        )
-    os.remove(concat_list)
-
-    if ret != 0:
-        # ffmpeg failed — fall back to raw binary concat (no tags)
-        print("  ⚠ ffmpeg concat failed, falling back to raw concat (no ID3 tags)")
+        print("  ⚠ concat WAV missing — binary fallback")
         with open(output_path, "wb") as out:
-            for f in all_files:
-                with open(f, "rb") as inp:
-                    out.write(inp.read())
+            for f in ([intro_path] if os.path.exists(intro_path) else []) + \
+                     [os.path.join(segments_dir, f"{i:03d}_{lines[i]['host']}.mp3") for i in range(len(lines))] + \
+                     ([outro_path] if os.path.exists(outro_path) else []):
+                if os.path.exists(f):
+                    with open(f, "rb") as inp:
+                        out.write(inp.read())
 
-    final_size = os.path.getsize(output_path)
+    # Cleanup
+    for f in [concat_wav, wav_list]:
+        if os.path.exists(f): os.remove(f)
+    import shutil
+    if os.path.exists(temp_wavs):
+        try: shutil.rmtree(temp_wavs)
+        except: pass
+
+    if os.path.exists(os.path.join(output_dir, "_concat.txt")):
+        os.remove(os.path.join(output_dir, "_concat.txt"))
+
+    final_size = os.path.getsize(output_path) if os.path.exists(output_path) else 0
     print(f"\n✓ Podcast: {output_path}")
     print(f"  Title:  {ep_title}")
     print(f"  Artist: {ARTIST}  |  Album: {ALBUM}  |  Track: {ep_num}")

@@ -1,0 +1,18 @@
+import { GraphClient } from './lib/client.js';
+
+async function main() {
+  const client = new GraphClient('emp', false);
+  
+  // Check what app roles / permissions the current app has in the tenant
+  const appId = 'f0a49290-5368-45f2-9166-c7920346818e';
+  
+  try {
+    // Get the service principal for our app in the tenant
+    const r = await client.getRaw(`/servicePrincipals(appId='${appId}')?$select=appRoles,oauth2PermissionGrants`);
+    console.log('SP with perms:', r.substring(0, 2000));
+  } catch(e) {
+    console.log('Error:', e.message);
+  }
+}
+
+main().catch(e => console.error(e.message));

@@ -35,7 +35,20 @@ def get_cookie() -> str:
     return p.read_text().strip()
 
 
+def get_cookie() -> str:
+    p = Path(COOKIE_FILE)
+    if not p.exists():
+        sys.exit(f"Cookie file not found: {COOKIE_FILE}\nGet your cookie from suno.com DevTools > Network > any request > Cookie header.")
+    content = p.read_text().strip()
+    # If it looks like a Clerk JWT (starts with eyJ), treat it as a Bearer token directly
+    if content.startswith("eyJ"):
+        return content  # will bypass get_token() in the caller
+    return content
+
 def get_token(cookie: str) -> str:
+    # JWT path: cookie is already the Bearer token
+    if cookie.startswith("eyJ"):
+        return cookie
     req = urllib.request.Request(CLERK_URL, headers={
         "Cookie": cookie,
         "User-Agent": "Mozilla/5.0",
@@ -54,7 +67,7 @@ def api(method: str, path: str, body=None, cookie=None, token=None) -> dict:
         "User-Agent": "Mozilla/5.0",
         "Content-Type": "application/json",
     }
-    if cookie:
+    if cookie and not cookie.startswith("eyJ"):
         headers["Cookie"] = cookie
     if token:
         headers["Authorization"] = f"Bearer {token}"

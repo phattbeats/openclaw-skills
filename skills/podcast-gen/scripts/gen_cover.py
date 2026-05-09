@@ -107,7 +107,6 @@ def generate_cover(ep_number, ep_title, output_path=None):
     print(f"✅ Cover saved: {output_path} ({size:,} bytes)")
     return output_path
 
-    return output_path
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
