@@ -1,0 +1,15 @@
+{
+  "name": "apple-business-manager",
+  "version": "1.0.0",
+  "description": "Apple Business Manager CLI for device enrollment, MDM assignment, and user management",
+  "type": "commonjs",
+  "main": "scripts/abm.cjs",
+  "scripts": {
+    "abm": "node scripts/abm.js"
+  },
+  "keywords": ["apple", "abm", "mdm", "device-management"],
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^14.0.3"
+  }
+}

@@ -274,3 +274,12 @@ JSON envelopes:
 | Variable | Default | Description |
 |---|---|---|
 | `MIROFISH_URL` | `http://10.0.0.100:5001` | Override base URL |
+
+---
+
+## DEPRECATED
+
+This skill is deprecated. MiroFish has been replaced by **MiroShark**.
+
+See: https://github.com/phattbeats/MiroShark
+Archived skill: `/root/.openclaw/workspace/skills/mirofish-deprecated/`
