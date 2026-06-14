@@ -117,6 +117,6 @@ npx tsx /root/.openclaw/workspace/skills/prowlarr/scripts/prowlarr.ts history --
 - **Categories:** Movies=2000, TV=5000, Audio=3000, Anime=7000
 - **Download URL from search result:** `downloadUrl` field — this is the Prowlarr-proxied URL
 - **No POST to `/grab`** — the old v0 skill tried this. The correct approach: use the `downloadUrl` from search results directly (it routes through Prowlarr to Deluge)
-- **Deluge WebUI:** `http://10.0.0.100:8112/json` — password: `***REMOVED***`
+- **Deluge WebUI:** `http://10.0.0.100:8112/json` — password: `${DELUGE_PASSWORD}` (set in env)
 - **Deluge add torrent method:** `core.add_torrent_magnet` (for magnets) or `core.add_torrent_url` (for http)
 - **Search is slow** — many indexers are slow/rate-limited. Always set `--limit` and `--categories`. Expect 30-120 second response times on broad searches.
