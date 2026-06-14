@@ -1,12 +1,12 @@
 # Credential Rotation Needed
 
-**Status:** CRITICAL — this repo is public at github.com/phattbeats/openclaw-skills
+**Status:** History rewritten (`git filter-repo`) on 2026-06-14. Force-push still pending — see "Push steps" below.
 **Generated:** 2026-06-14 (during secrets redaction pass)
-**Redaction commit:** pending
+**Redaction commit:** rewritten hashes (see `git log`)
 
-Every credential listed below was committed in plaintext to the public GitHub repo. Even after redaction in `master`, the values remain in git history. **All of them need to be rotated** by issuing new credentials at the respective service and updating `.env`.
+Every credential listed below was committed in plaintext to the public GitHub repo. As of 2026-06-14, the values have been stripped from the rewritten history and replaced with the literal string `REDACTED`. **All of them still need to be rotated** by issuing new credentials at the respective service and updating `.env`.
 
-The redaction only prevents *future* leaks. The history is permanent.
+Even though the new history is clean, the old history is **still visible on GitHub** until the force-push lands. After the push, GitHub will display the new (clean) history, but anyone who fetched the repo before the push still has the old refs cached locally until they fetch again. Rotation minimizes the impact of that window.
 
 ---
 
@@ -83,3 +83,37 @@ The redaction only prevents *future* leaks. The history is permanent.
 | `skills/ms-graph/SKILL.md` | MS Graph client_id (UUID, low-sensitivity) in 3 references |
 
 **All secrets now sourced from env vars. Scripts abort with clear errors if env vars are missing.** No hardcoded fallbacks remain.
+
+---
+
+## Push steps (do these after rotation is done or accepted)
+
+```bash
+# 1. Generate a new GitHub fine-grained PAT at
+#    https://github.com/settings/tokens?type=beta
+#    Permissions: contents = read & write; target: phattbeats/openclaw-skills only.
+
+# 2. Add it to the remote URL
+git remote set-url origin https://NEW_TOKEN@github.com/phattbeats/openclaw-skills.git
+
+# 3. Force-push. --force-with-lease is safer than --force (refuses if remote
+#    was updated by someone else in the meantime)
+git push --force-with-lease origin master
+
+# 4. Verify on github.com/phattbeats/openclaw-skills that:
+#    - The latest commit message is "chore(security): externalize MS Graph client_id..."
+#    - Searching for any of the rotated values returns 0 results
+#    - File history for plex/SKILL.md etc. shows clean content from the beginning
+
+# 5. Once the push is verified, remove the local backup
+rm -rf .git.backup-*
+```
+
+## Why not just rotate and leave history alone?
+
+Public repos with leaked credentials have a window of exposure that can stretch indefinitely:
+- GitHub archives the old history (still served at `github.com/<org>/<repo>/commit/<old-hash>` for ~forever, depending on privacy/visibility settings)
+- The Internet Archive (Wayback Machine) and various mirrors snapshot public repos
+- Anyone who has already cloned the repo retains the old refs locally
+
+History rewrite + rotation closes the window. Doing only one of them is half a fix.
