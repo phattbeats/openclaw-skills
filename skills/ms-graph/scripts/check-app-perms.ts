@@ -4,7 +4,11 @@ async function main() {
   const client = new GraphClient('emp', false);
   
   // Check what app roles / permissions the current app has in the tenant
-  const appId = '***REMOVED***';
+  const appId = process.env.MS_GRAPH_CLIENT_ID;
+  if (!appId) {
+    console.error('ms-graph: missing MS_GRAPH_CLIENT_ID env var');
+    process.exit(1);
+  }
   
   try {
     // Get the service principal for our app in the tenant

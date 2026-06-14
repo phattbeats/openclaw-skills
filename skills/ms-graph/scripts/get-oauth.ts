@@ -4,7 +4,11 @@ async function main() {
   const client = new GraphClient('emp', false);
   
   // Check the app's oauth2PermissionGrants
-  const clientId = '***REMOVED***';
+  const clientId = process.env.MS_GRAPH_CLIENT_ID;
+  if (!clientId) {
+    console.error('ms-graph: missing MS_GRAPH_CLIENT_ID env var');
+    process.exit(1);
+  }
   
   try {
     const grants = await client.get(`/oauth2PermissionGrants?$filter=clientId eq '${clientId}'`);
