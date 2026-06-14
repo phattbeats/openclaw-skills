@@ -23,9 +23,11 @@ from lib.output import OutputFormatter
 
 
 def get_rpc_client() -> DelugeRPC:
-    """Create RPC client from environment or defaults."""
+    """Create RPC client from environment. No default password — aborts if missing."""
     url = os.environ.get("DELUGE_URL", "http://10.0.0.100:8112")
-    password = os.environ.get("DELUGE_PASS", "***REMOVED***")
+    password = os.environ.get("DELUGE_PASSWORD") or os.environ.get("DELUGE_PASS")
+    if not password:
+        sys.exit("deluge: missing DELUGE_PASSWORD (or DELUGE_PASS) env var")
     return DelugeRPC(url=url, password=password)
 
 

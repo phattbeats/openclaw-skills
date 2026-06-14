@@ -77,10 +77,10 @@ Pass `--tenant <alias>` or use raw tenant GUID/domain. Default is `phatt`.
 ## App Registration
 
 - **App name:** PHATT TECH Agent
-- **Client ID:** `***REMOVED***`
+- **Client ID:** `${MS_GRAPH_CLIENT_ID}` (set in env; was previously hardcoded — now externalized)
 - **Type:** Multi-tenant — same client_id/secret works for all three tenants
 - **Auth flow:** client_credentials (service-to-service — no user interaction)
-- **Credentials:** Hardcoded in `scripts/lib/client.ts`; override with env vars `MS_GRAPH_CLIENT_ID` / `MS_GRAPH_CLIENT_SECRET`
+- **Credentials:** Read from env vars `MS_GRAPH_CLIENT_ID` / `MS_GRAPH_CLIENT_SECRET` (required, no hardcoded fallbacks)
 
 ### Granted Permissions (Application — all tenants)
 
@@ -303,7 +303,7 @@ npx tsx scripts/msgraph.ts --tenant emp --json users create \
 # Get token
 EMP_TOKEN=$(curl -s -X POST \
   "https://login.microsoftonline.com/fdc66d9c-59a1-4090-afd6-5a582649cf39/oauth2/v2.0/token" \
-  -d "client_id=***REMOVED***&client_secret=${MS_GRAPH_CLIENT_SECRET}&scope=https://graph.microsoft.com/.default&grant_type=client_credentials" \
+  -d "client_id=${MS_GRAPH_CLIENT_ID}&client_secret=${MS_GRAPH_CLIENT_SECRET}&scope=https://graph.microsoft.com/.default&grant_type=client_credentials" \
   | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")
 
 # Search inbox
@@ -369,7 +369,7 @@ import subprocess, json
 def emp_token():
     r = subprocess.run(["curl", "-s", "-X", "POST",
         "https://login.microsoftonline.com/fdc66d9c-59a1-4090-afd6-5a582649cf39/oauth2/v2.0/token",
-        "-d", "client_id=***REMOVED***&client_secret=$MS_GRAPH_CLIENT_SECRET&scope=https://graph.microsoft.com/.default&grant_type=client_credentials"],
+        "-d", "client_id=${MS_GRAPH_CLIENT_ID}&client_secret=${MS_GRAPH_CLIENT_SECRET}&scope=https://graph.microsoft.com/.default&grant_type=client_credentials"],
         capture_output=True, text=True)
     return json.loads(r.stdout)["access_token"]
 

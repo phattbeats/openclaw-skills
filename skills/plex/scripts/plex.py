@@ -13,12 +13,18 @@ import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional
 
-# Configuration
-PLEX_URL = "http://10.0.0.100:32400"
-PLEX_TOKEN = "***REMOVED***"
-TAUTULLI_URL = "http://10.0.0.100:8181"
-TAUTULLI_API_KEY = "***REMOVED***"
-TMDB_API_KEY = "***REMOVED***"
+# Configuration — all secrets read from env, no hardcoded fallbacks.
+# URLs are non-secret and may stay as defaults.
+import os as _os
+PLEX_URL = _os.environ.get("PLEX_URL", "http://10.0.0.100:32400")
+PLEX_TOKEN = _os.environ.get("PLEX_TOKEN")
+if not PLEX_TOKEN:
+    sys.exit("plex: missing PLEX_TOKEN env var")
+TAUTULLI_URL = _os.environ.get("TAUTULLI_URL", "http://10.0.0.100:8181")
+TAUTULLI_API_KEY = _os.environ.get("TAUTULLI_API_KEY")
+if not TAUTULLI_API_KEY:
+    sys.exit("plex: missing TAUTULLI_API_KEY env var")
+TMDB_API_KEY = _os.environ.get("TMDB_API_KEY")
 TMDB_BASE = "https://api.themoviedb.org/3"
 
 

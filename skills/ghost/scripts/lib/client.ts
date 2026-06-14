@@ -1,9 +1,18 @@
 import crypto from 'crypto';
 
 const BASE_URL = 'https://phattmedia.club/ghost/api/admin';
-const KEY_ID = '***REMOVED***';
-const KEY_SECRET = '***REMOVED***';
-export const CONTENT_KEY = '***REMOVED***';
+
+// Admin key (id:secret) — read from env, format `id:hex_secret`.
+const ADMIN_KEY = process.env.GHOST_ADMIN_API_KEY;
+if (!ADMIN_KEY || !ADMIN_KEY.includes(':')) {
+  throw new Error('ghost: missing or malformed GHOST_ADMIN_API_KEY env var (expected id:hex_secret)');
+}
+const [KEY_ID, KEY_SECRET] = ADMIN_KEY.split(':', 2);
+
+export const CONTENT_KEY = process.env.GHOST_CONTENT_API_KEY;
+if (!CONTENT_KEY) {
+  throw new Error('ghost: missing GHOST_CONTENT_API_KEY env var');
+}
 
 function makeJWT(): string {
   const header = Buffer.from(JSON.stringify({ alg: 'HS256', kid: KEY_ID, typ: 'JWT' })).toString('base64url');

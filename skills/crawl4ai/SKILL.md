@@ -44,7 +44,7 @@ crawl4ai job <task_id>                          # check async job status
 
 ```bash
 curl -X POST http://crawl4ai:11235/crawl \
-  -H "Authorization: Bearer ***REMOVED***" \
+  -H "Authorization: Bearer ${CRAWL4AI_API_TOKEN}" \
   -H "Content-Type: application/json" \
   -d '{"urls": ["https://example.com"], "css_selector": "main"}'
 ```
@@ -65,7 +65,7 @@ Full OpenAPI spec: `references/openapi.json`
 ## Environment
 
 - `CRAWL4AI_URL` — default: `http://crawl4ai:11235`
-- `CRAWL4AI_API_TOKEN` — default: `***REMOVED***`
+- `CRAWL4AI_API_TOKEN` — **required, no default** (set in env or `~/.bashrc`)
 - `CRAWL4AI_PROXY` — default: `http://10.0.0.100:8118` (Privoxy). All requests route through this proxy automatically.
 
 ## Notes

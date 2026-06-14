@@ -8,8 +8,11 @@ const { execSync } = require("child_process");
 const https = require("https");
 const querystring = require("querystring");
 
-const API_KEY = "***REMOVED***";
-const API_USER = "phatt";
+const API_KEY = process.env.NAMECHEAP_API_KEY;
+if (!API_KEY) {
+  throw new Error("namecheap-cli: missing NAMECHEAP_API_KEY env var");
+}
+const API_USER = process.env.NAMECHEAP_API_USER || "phatt";
 const API_ENDPOINT = "https://api.namecheap.com/xml.response";
 
 let _cachedIp = null;

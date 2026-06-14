@@ -1,5 +1,8 @@
 const BASE_URL = "https://api.resend.com";
-const API_KEY = "***REMOVED***";
+const API_KEY = process.env.RESEND_API_KEY;
+if (!API_KEY) {
+  throw new Error("resend: missing RESEND_API_KEY env var");
+}
 const UA = "openclaw-resend-cli/1.0";
 
 export async function resendFetch(

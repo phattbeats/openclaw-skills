@@ -19,8 +19,14 @@
 set -euo pipefail
 
 BASE_URL="${CRAWL4AI_URL:-http://crawl4ai:11235}"
-TOKEN="${CRAWL4AI_API_TOKEN:-***REMOVED***}"
+# CRAWL4AI_API_TOKEN is required. Aborts below if missing.
+TOKEN="${CRAWL4AI_API_TOKEN:-}"
 PROXY="${CRAWL4AI_PROXY:-http://10.0.0.100:8118}"
+
+if [ -z "$TOKEN" ]; then
+  echo "crawl4ai: missing CRAWL4AI_API_TOKEN env var" >&2
+  exit 1
+fi
 CMD="${1:-help}"
 shift 2>/dev/null || true
 
@@ -198,7 +204,7 @@ Commands:
 
 Environment:
   CRAWL4AI_URL           API base (default: http://crawl4ai:11235)
-  CRAWL4AI_API_TOKEN     Auth token (default: ***REMOVED***)
+  CRAWL4AI_API_TOKEN     Auth token (REQUIRED — set in env, no default)
 
 Examples:
   crawl4ai health

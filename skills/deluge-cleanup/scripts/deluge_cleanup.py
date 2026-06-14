@@ -31,15 +31,24 @@ import os
 from datetime import datetime, timezone
 
 # ── Config ───────────────────────────────────────────────────────────────────
+# URLs are non-secret — keep as defaults. Secrets have NO default; script aborts if missing.
 
 DELUGE_URL      = os.environ.get("DELUGE_URL",   "http://10.0.0.100:8112/json")
-DELUGE_PASSWORD = os.environ.get("DELUGE_PASS",  "***REMOVED***")
+DELUGE_PASSWORD = os.environ.get("DELUGE_PASSWORD") or os.environ.get("DELUGE_PASS")
+if not DELUGE_PASSWORD:
+    sys.exit("deluge_cleanup: missing DELUGE_PASSWORD (or DELUGE_PASS) env var")
 PLEX_URL        = os.environ.get("PLEX_URL",     "http://10.0.0.100:32400")
-PLEX_TOKEN      = os.environ.get("PLEX_TOKEN",   "***REMOVED***")
+PLEX_TOKEN      = os.environ.get("PLEX_TOKEN")
+if not PLEX_TOKEN:
+    sys.exit("deluge_cleanup: missing PLEX_TOKEN env var")
 SONARR_URL      = os.environ.get("SONARR_URL",   "http://10.0.0.100:8989/sonarr")
-SONARR_KEY      = os.environ.get("SONARR_KEY",   "***REMOVED***")
+SONARR_KEY      = os.environ.get("SONARR_KEY")
+if not SONARR_KEY:
+    sys.exit("deluge_cleanup: missing SONARR_KEY env var")
 RADARR_URL      = os.environ.get("RADARR_URL",   "http://10.0.0.100:7878/radarr")
-RADARR_KEY      = os.environ.get("RADARR_KEY",   "***REMOVED***")
+RADARR_KEY      = os.environ.get("RADARR_KEY")
+if not RADARR_KEY:
+    sys.exit("deluge_cleanup: missing RADARR_KEY env var")
 
 # Tracker → minimum days to seed before removal is allowed.
 # None = unknown tracker, never auto-remove (manual review required).

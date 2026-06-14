@@ -18,7 +18,9 @@ import json, os, sys, time, urllib.request, urllib.error
 BACKEND = "chatterbox"
 
 # ── ElevenLabs config ──────────────────────────────────────────────────────────
-EL_API_KEY = "***REMOVED***"
+EL_API_KEY = os.environ.get("ELEVENLABS_API_KEY")
+if not EL_API_KEY:
+    print("render.py: ELEVENLABS_API_KEY not set (only needed for --elevenlabs backend)", file=sys.stderr)
 EL_MODEL   = "eleven_multilingual_v2"
 EL_VOICES  = {
     "dagoth":  "eoJ6YUIGSDTog01jkoK6",

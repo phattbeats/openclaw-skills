@@ -1,7 +1,14 @@
-// Cloudflare API v4 client — hardcoded credentials
-export const ACCOUNT_ID = '***REMOVED***';
-export const API_TOKEN = '***REMOVED***';
-export const DEFAULT_ZONE_ID = 'a05c0bb80667de2f0cd945f122615dc1'; // phatt.tech
+// Cloudflare API v4 client — credentials read from env.
+// Set CF_API_TOKEN_PHATT_TECH and CF_ACCOUNT_ID in the environment.
+function requireEnv(name: string): string {
+  const v = process.env[name];
+  if (!v) throw new Error(`cloudflare: missing required env var ${name}`);
+  return v;
+}
+
+export const ACCOUNT_ID = requireEnv('CF_ACCOUNT_ID');
+export const API_TOKEN = requireEnv('CF_API_TOKEN_PHATT_TECH');
+export const DEFAULT_ZONE_ID = 'a05c0bb80667de2f0cd945f122615dc1'; // phatt.tech (non-secret)
 export const DEFAULT_ZONE_NAME = 'phatt.tech';
 const BASE_URL = 'https://api.cloudflare.com/client/v4';
 

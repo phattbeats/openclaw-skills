@@ -31,10 +31,9 @@ IDs can be partial — first 8+ chars of the torrent hash works everywhere.
 
 ## Setup
 
-Credentials are hardcoded as defaults. Override with env vars if needed:
 ```bash
 export DELUGE_URL="http://10.0.0.100:8112"
-export DELUGE_PASS="***REMOVED***"
+export DELUGE_PASSWORD="${DELUGE_PASSWORD}"   # required, no hardcoded default
 ```
 
 ## Output Modes

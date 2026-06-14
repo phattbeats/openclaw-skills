@@ -12,8 +12,13 @@ import urllib.error
 import urllib.request
 from datetime import datetime, timedelta
 
+# Internal LiteLLM (PHATT-RAID). URL is non-secret — keep as default fallback.
 DEFAULT_URL = os.environ.get("LITELLM_URL", "http://10.0.0.100:4000")
-DEFAULT_KEY = os.environ.get("LITELLM_KEY", "***REMOVED***")
+
+# Auth: read from env. Required. Script aborts below if missing.
+DEFAULT_KEY = os.environ.get("LITELLM_KEY") or os.environ.get("LITELLM_API_KEY")
+if not DEFAULT_KEY:
+    sys.exit("litellm: missing LITELLM_KEY (or LITELLM_API_KEY) env var")
 PUPPETEER_PATH = '/root/.openclaw/utilities/tawk/node_modules/puppeteer-core'
 
 

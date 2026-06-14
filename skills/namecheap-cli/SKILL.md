@@ -22,8 +22,8 @@ NC="node /root/.openclaw/workspace/skills/namecheap-cli/scripts/namecheap.js"
 
 ## Auth & IP Whitelisting
 
-- **API Key:** `***REMOVED***`
-- **Account:** `phatt`
+- **API Key:** `${NAMECHEAP_API_KEY}` (set in env; no hardcoded default)
+- **Account:** `${NAMECHEAP_API_USER:-phatt}`
 - **IP Whitelist:** The Namecheap API requires the caller's public IP to be whitelisted at:
   `https://ap.www.namecheap.com/settings/tools/apiaccess/`
 - **Current IP:** Run `namecheap ip` to see the current public IP.

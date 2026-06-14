@@ -31,9 +31,15 @@ import crypto from 'crypto';
 
 // ─── Config ────────────────────────────────────────────────────────────────────
 
-const GHOST_URL = 'https://phattmedia.club';
-const GHOST_ADMIN_KEY_ID = '***REMOVED***';
-const GHOST_ADMIN_KEY_SECRET = '***REMOVED***';
+const GHOST_URL = process.env.GHOST_URL || 'https://phattmedia.club';
+
+// Admin key (id:secret) — read from env, format `id:hex_secret`.
+const ADMIN_KEY = process.env.GHOST_ADMIN_API_KEY;
+if (!ADMIN_KEY || !ADMIN_KEY.includes(':')) {
+  console.error('ghost-wizarr-sync: missing or malformed GHOST_ADMIN_API_KEY env var (expected id:hex_secret)');
+  process.exit(1);
+}
+const [GHOST_ADMIN_KEY_ID, GHOST_ADMIN_KEY_SECRET] = ADMIN_KEY.split(':', 2);
 
 // ─── Ghost JWT Helper ──────────────────────────────────────────────────────────
 

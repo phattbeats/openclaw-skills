@@ -20,8 +20,11 @@ const TENANT_ALIASES: Record<string, string> = {
   crl: "55c42a1d-f107-4ebb-ab7e-1dd92b97c9bc",
 };
 
-const CLIENT_ID = process.env.MS_GRAPH_CLIENT_ID || "***REMOVED***";
-const CLIENT_SECRET = process.env.MS_GRAPH_CLIENT_SECRET || "$MS_GRAPH_CLIENT_SECRET";
+// MS Graph multi-tenant app credentials. Required env vars; no hardcoded fallbacks.
+const CLIENT_ID = process.env.MS_GRAPH_CLIENT_ID;
+if (!CLIENT_ID) throw new Error('ms-graph: missing MS_GRAPH_CLIENT_ID env var');
+const CLIENT_SECRET = process.env.MS_GRAPH_CLIENT_SECRET;
+if (!CLIENT_SECRET) throw new Error('ms-graph: missing MS_GRAPH_CLIENT_SECRET env var');
 const BASE_URL = "https://graph.microsoft.com/v1.0";
 
 const tokenCache: Map<string, TokenCache> = new Map();

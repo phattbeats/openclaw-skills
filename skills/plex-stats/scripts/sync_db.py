@@ -1,7 +1,9 @@
-import sqlite3, urllib.request, json, time, os
+import sqlite3, urllib.request, json, time, os, sys
 
-TAUTULLI_URL = "http://10.0.0.100:8181"
-TAUTULLI_KEY = "***REMOVED***"
+TAUTULLI_URL = os.environ.get("TAUTULLI_URL", "http://10.0.0.100:8181")
+TAUTULLI_KEY = os.environ.get("TAUTULLI_API_KEY")
+if not TAUTULLI_KEY:
+    sys.exit("sync_db: missing TAUTULLI_API_KEY env var")
 DB = "/root/.openclaw/workspace/skills/plex-stats/data/tautulli_history.db"
 
 def api(cmd, **params):

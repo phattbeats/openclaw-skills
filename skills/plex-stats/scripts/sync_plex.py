@@ -1,7 +1,9 @@
-import sqlite3, urllib.request, xml.etree.ElementTree as ET, time
+import sqlite3, urllib.request, xml.etree.ElementTree as ET, time, os, sys
 
-PLEX_URL = "http://10.0.0.100:32400"
-PLEX_TOKEN = "***REMOVED***"
+PLEX_URL = os.environ.get("PLEX_URL", "http://10.0.0.100:32400")
+PLEX_TOKEN = os.environ.get("PLEX_TOKEN")
+if not PLEX_TOKEN:
+    sys.exit("sync_plex: missing PLEX_TOKEN env var")
 DB = "/root/.openclaw/workspace/skills/plex-stats/data/tautulli_history.db"
 
 def plex_get(endpoint):

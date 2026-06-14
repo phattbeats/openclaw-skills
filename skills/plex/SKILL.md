@@ -21,13 +21,13 @@ plex.py info                       # Server details
 ## Setup
 
 ```bash
-PLEX_URL="http://10.0.0.100:32400"
-PLEX_TOKEN="***REMOVED***"
-TAUTULLI_URL="http://10.0.0.100:8181"
-TAUTULLI_API_KEY="***REMOVED***"
+export PLEX_URL="http://10.0.0.100:32400"
+export PLEX_TOKEN="${PLEX_TOKEN}"
+export TAUTULLI_URL="http://10.0.0.100:8181"
+export TAUTULLI_API_KEY="${TAUTULLI_API_KEY}"
 ```
 
-Hardcoded defaults work without env vars.
+`PLEX_TOKEN` and `TAUTULLI_API_KEY` are required (no hardcoded fallbacks). Set them in your shell or Docker env.
 
 ## Commands
 

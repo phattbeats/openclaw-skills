@@ -15,10 +15,12 @@ class DelugeRPC:
     def __init__(
         self,
         url: str = "http://10.0.0.100:8112",
-        password: str = "***REMOVED***",
+        password: str = "",  # must be supplied by caller via env (DELUGE_PASSWORD)
         max_retries: int = 3,
         backoff_factor: float = 1.0,
     ):
+        if not password:
+            raise ValueError("DelugeRPC: password is required (set DELUGE_PASSWORD env var)")
         self.url = url.rstrip("/")
         if self.url.endswith("/json"):
             self.base_url = self.url

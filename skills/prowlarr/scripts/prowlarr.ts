@@ -192,7 +192,10 @@ const sendToDeluge = async (downloadUrl: string) => {
 
   // Step 1: Login to Deluge
   const delugeBase = 'http://10.0.0.100:8112/json';
-  const password = process.env.DELUGE_PASSWORD || '***REMOVED***';
+  const password = process.env.DELUGE_PASSWORD || process.env.DELUGE_PASS;
+  if (!password) {
+    throw new Error('prowlarr: missing DELUGE_PASSWORD (or DELUGE_PASS) env var');
+  }
 
   const deluge = (method: string, params: unknown[]) =>
     fetch(delugeBase, {

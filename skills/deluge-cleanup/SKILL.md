@@ -103,14 +103,14 @@ All other labels (`music`, `books`, `lidarr`, etc.) are skipped. This ensures we
 
 TV torrents are checked at the **episode** level, not just series level. This prevents deletion of torrents where the series exists in Sonarr but the specific episode file was never added (e.g., manually imported, or season pack not split). Those appear as `NO_ARR` for manual review. This is intentionally strict; if in doubt, keep the data.
 
-## Credentials (already hardcoded as defaults)
+## Credentials (all required env vars, no hardcoded fallbacks)
 
-- Deluge: `http://10.0.0.100:8112` / password in TOOLS.md
-- Plex: `http://10.0.0.100:32400` / token `***REMOVED***`
-- Sonarr: `http://10.0.0.100:8989/sonarr` / API key `***REMOVED***`
-- Radarr: `http://10.0.0.100:7878/radarr` / API key `***REMOVED***`
+- Deluge: `http://10.0.0.100:8112` — `DELUGE_PASSWORD` (or legacy `DELUGE_PASS`)
+- Plex: `http://10.0.0.100:32400` — `PLEX_TOKEN`
+- Sonarr: `http://10.0.0.100:8989/sonarr` — `SONARR_KEY`
+- Radarr: `http://10.0.0.100:7878/radarr` — `RADARR_KEY`
 
-Override via env vars: `DELUGE_URL`, `DELUGE_PASS`, `PLEX_URL`, `PLEX_TOKEN`, `SONARR_URL`, `SONARR_KEY`, `RADARR_URL`, `RADARR_KEY`
+All keys must be set in the env; the script aborts with a clear error if any are missing.
 
 ## Notes
 

@@ -107,8 +107,8 @@ npx tsx scripts/pax8.ts invoices list --all
 PAX8_TOKEN=$(curl -s -X POST "https://api.pax8.com/v1/token" \
   -H "content-type: application/json" \
   -d '{
-    "client_id": "***REMOVED***",
-    "client_secret": "***REMOVED***",
+    "client_id": "'"${PAX8_CLIENT_ID}"'",
+    "client_secret": "'"${PAX8_CLIENT_SECRET}"'",
     "audience": "https://api.pax8.com",
     "grant_type": "client_credentials"
   }' | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")

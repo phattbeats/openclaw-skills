@@ -10,12 +10,11 @@ Wrapper around the Prowlarr API at `http://10.0.0.100:9696` for searching indexe
 
 ## Setup
 
-Prowlarr is running at `http://10.0.0.100:9696`. API key: `***REMOVED***`.
+Prowlarr is running at `http://10.0.0.100:9696`. The API key lives in the `PROWLARR_API_KEY` env var (required — no hardcoded default).
 
-Environment variables (set in shell or inline):
 ```bash
 export PROWLARR_URL=http://10.0.0.100:9696
-export PROWLARR_API_KEY=***REMOVED***
+export PROWLARR_API_KEY="${PROWLARR_API_KEY}"
 ```
 
 ## Usage
@@ -92,7 +91,7 @@ This:
 # 1. Search
 npx tsx /root/.openclaw/workspace/skills/prowlarr/scripts/prowlarr.ts search "Project Hail Mary 2026" --limit 10 --categories 2000
 # 2. Send to Deluge using downloadUrl from results
-npx tsx /root/.openclaw/workspace/skills/prowlarr/scripts/prowlarr.ts deluge "http://10.0.0.100:9696/prowlarr/102/download?apikey=***REMOVED***&guid=..."
+npx tsx /root/.openclaw/workspace/skills/prowlarr/scripts/prowlarr.ts deluge "http://10.0.0.100:9696/prowlarr/102/download?apikey=${PROWLARR_API_KEY}&guid=..."
 ```
 
 ### Find a specific indexer's results
@@ -113,7 +112,7 @@ npx tsx /root/.openclaw/workspace/skills/prowlarr/scripts/prowlarr.ts history --
 ## Key Prowlarr API Facts
 
 - **Base URL:** `http://10.0.0.100:9696/prowlarr`
-- **API key header:** `X-Api-Key: ***REMOVED***`
+- **API key header:** `X-Api-Key: ${PROWLARR_API_KEY}`
 - **Search:** `GET /api/v1/search?term=...&categories=...&indexerIds=...&limit=...`
 - **Categories:** Movies=2000, TV=5000, Audio=3000, Anime=7000
 - **Download URL from search result:** `downloadUrl` field — this is the Prowlarr-proxied URL

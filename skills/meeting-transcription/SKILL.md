@@ -39,7 +39,7 @@ Options:
 ### Full pipeline
 
 ```bash
-export LITELLM_API_KEY=***REMOVED***
+export LITELLM_API_KEY="${LITELLM_API_KEY}"
 
 /root/.openclaw/faster-whisper-env/bin/python \
   /root/.openclaw/workspace/skills/meeting-transcription/scripts/meeting-pipeline.py \

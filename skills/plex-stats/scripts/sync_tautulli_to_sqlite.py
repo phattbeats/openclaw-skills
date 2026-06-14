@@ -7,9 +7,11 @@ Run via cron or on-demand. Keeps full play history locally for fast analysis.
 import sqlite3, urllib.request, json, time, os, sys
 from datetime import datetime
 
-# Config
-TAUTULLI_URL = "http://10.0.0.100:8181"
-TAUTULLI_KEY = "***REMOVED***"
+# Config — auth from env, no hardcoded fallbacks.
+TAUTULLI_URL = os.environ.get("TAUTULLI_URL", "http://10.0.0.100:8181")
+TAUTULLI_KEY = os.environ.get("TAUTULLI_API_KEY")
+if not TAUTULLI_KEY:
+    sys.exit("sync_tautulli_to_sqlite: missing TAUTULLI_API_KEY env var")
 DB_PATH = os.path.dirname(os.path.abspath(__file__)) + "/../data/tautulli_history.db"
 
 def tautulli_api(cmd, params=None):
