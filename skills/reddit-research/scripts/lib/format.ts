@@ -9,14 +9,21 @@ export function formatPost(p: any, index?: number): string {
   const flair = p.flair ? ` [${p.flair}]` : "";
   const nsfw = p.isNsfw ? " 🔞" : "";
   const sticky = p.stickied ? " 📌" : "";
+  const ratioStr = p.upvoteRatio ? ` (${Math.round(p.upvoteRatio * 100)}%)` : "";
+  const authorStr = p.author ? `   by u/${p.author} • ${timeAgo(p.created)}` : `   ${timeAgo(p.created)}`;
   const lines = [
-    `${prefix} r/${p.subreddit} | ⬆️ ${fmtNum(p.score)} (${Math.round(p.upvoteRatio * 100)}%) | 💬 ${p.numComments}${flair}${nsfw}${sticky}`,
+    `${prefix} r/${p.subreddit} | ⬆️ ${fmtNum(p.score)}${ratioStr} | 💬 ${fmtNum(p.numComments)}${flair}${nsfw}${sticky}`,
     `   ${p.title}`,
-    `   by u/${p.author} • ${timeAgo(p.created)}`,
+    authorStr,
     `   ${p.permalink}`,
   ];
   if (p.selftext && p.selftext.length > 0) {
-    lines.push(`   ${p.selftext.slice(0, 200).replace(/\n/g, " ")}${p.selftext.length > 200 ? "..." : ""}`);
+    const marker = isRemovalMarker(p.selftext);
+    if (marker) {
+      lines.push(`   ${marker}`);
+    } else {
+      lines.push(`   ${p.selftext.slice(0, 200).replace(/\n/g, " ")}${p.selftext.length > 200 ? "..." : ""}`);
+    }
   }
   return lines.join("\n");
 }
@@ -32,9 +39,14 @@ export function formatComment(c: any): string {
   const op = c.isOp ? " [OP]" : "";
   const edited = c.edited ? " ✏️" : "";
   const controversial = c.controversiality ? " ⚡" : "";
+  const removal = isRemovalMarker(c.body);
+  const bodyDisplay = removal
+    ? removal
+    : `${c.body.slice(0, 300).replace(/\n/g, `\n${indent}  `)}${c.body.length > 300 ? "..." : ""}`;
+  const authorStr = c.author ? `u/${c.author}` : "[deleted]";
   return [
-    `${indent}⬆️ ${fmtNum(c.score)} | u/${c.author}${op}${edited}${controversial} • ${timeAgo(c.created)}`,
-    `${indent}  ${c.body.slice(0, 300).replace(/\n/g, `\n${indent}  `)}${c.body.length > 300 ? "..." : ""}`,
+    `${indent}⬆️ ${fmtNum(c.score)} | ${authorStr}${op}${edited}${controversial} • ${timeAgo(c.created)}`,
+    `${indent}  ${bodyDisplay}`,
   ].join("\n");
 }
 
@@ -42,10 +54,12 @@ export function formatComment(c: any): string {
 
 export function formatThread(data: any): string {
   const { post, comments } = data;
+  const ratioStr = post.upvoteRatio ? ` (${Math.round(post.upvoteRatio * 100)}%)` : "";
+  const authorLine = post.author ? `by u/${post.author} • ${timeAgo(post.created)}` : timeAgo(post.created);
   const lines = [
     `# ${post.title}`,
-    `r/${post.subreddit} | ⬆️ ${fmtNum(post.score)} (${Math.round(post.upvoteRatio * 100)}%) | 💬 ${post.numComments}`,
-    `by u/${post.author} • ${timeAgo(post.created)}`,
+    `r/${post.subreddit} | ⬆️ ${fmtNum(post.score)}${ratioStr} | 💬 ${post.numComments}`,
+    authorLine,
     `${post.permalink}`,
     "",
   ];
@@ -71,10 +85,11 @@ export function formatThread(data: any): string {
 export function formatUser(u: any): string {
   return [
     `👤 u/${u.name}`,
-    `   Karma: ${fmtNum(u.karma)} (${fmtNum(u.linkKarma)} post + ${fmtNum(u.commentKarma)} comment)`,
-    `   Account age: ${timeAgo(u.created)}`,
-    `   Verified: ${u.verified ? "✅" : "❌"}`,
+    u.karma ? `   Karma: ${fmtNum(u.karma)} (${fmtNum(u.linkKarma)} post + ${fmtNum(u.commentKarma)} comment)` : "",
+    u.created ? `   Account age: ${timeAgo(u.created)}` : "",
+    u.verified ? "   Verified: ✅" : "",
     u.suspended ? "   ⚠️ SUSPENDED" : "",
+    u.rawKarmaText ? `   ${u.rawKarmaText}` : "",
   ]
     .filter(Boolean)
     .join("\n");
@@ -83,10 +98,12 @@ export function formatUser(u: any): string {
 // ─── Subreddit ────────────────────────────────────────
 
 export function formatSubreddit(s: any): string {
+  const subsStr = s.subscribers > 0 ? `${fmtNum(s.subscribers)} subscribers` : "subscribers (hidden for anonymous browsing)";
+  const usersStr = s.activeUsers > 0 ? `${fmtNum(s.activeUsers)} online` : "";
   return [
     `📋 r/${s.name} — ${s.title}`,
-    `   ${fmtNum(s.subscribers)} subscribers | ${fmtNum(s.activeUsers)} online`,
-    `   Created: ${timeAgo(s.created)}`,
+    `   ${subsStr}${usersStr ? " | " + usersStr : ""}`,
+    s.created ? `   Created: ${timeAgo(s.created)}` : "",
     s.nsfw ? "   🔞 NSFW" : "",
     s.description ? `   ${s.description.slice(0, 200)}` : "",
   ]
@@ -106,7 +123,12 @@ export function toMarkdown(posts: any[], title?: string): string {
     lines.push(`r/${p.subreddit} · ⬆️ ${fmtNum(p.score)} · 💬 ${p.numComments} · u/${p.author} · ${timeAgo(p.created)}`);
     lines.push(`[Link](${p.permalink})`);
     if (p.selftext) {
-      lines.push("", `> ${p.selftext.slice(0, 300).replace(/\n/g, "\n> ")}`);
+      const marker = isRemovalMarker(p.selftext);
+      if (marker) {
+        lines.push("", `> ${marker}`);
+      } else {
+        lines.push("", `> ${p.selftext.slice(0, 300).replace(/\n/g, "\n> ")}`);
+      }
     }
     lines.push("");
   }
@@ -121,6 +143,13 @@ export function toJson(data: any): string {
 }
 
 // ─── Helpers ──────────────────────────────────────────
+
+function isRemovalMarker(body: string): string | null {
+  const t = body.trim();
+  if (t === "[removed]") return "⛔ [removed by moderator]";
+  if (t === "[deleted]") return "🗑️ [deleted by author]";
+  return null;
+}
 
 function fmtNum(n: number): string {
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;

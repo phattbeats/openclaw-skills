@@ -207,19 +207,19 @@ async function cmdFeed(sort: api.FeedSort) {
 
 async function cmdThread() {
   const input = args[1];
-  if (!input) return console.error("Usage: reddit.ts thread <url|post_id> [--sub <subreddit>] [--sort top|best|new|controversial] [--limit N] [--depth N]");
-
-  const sort = (opt("sort", "top") as any);
-  const limit = numOpt("limit", 30);
-  const depth = numOpt("depth", 3);
+  if (!input) return console.error("Usage: reddit.ts thread <url|post_id> [--sub <subreddit>]");
 
   let result;
-  if (input.includes("reddit.com")) {
-    result = await api.threadFromUrl(input, { sort, limit, depth });
-  } else {
-    const sub = opt("sub");
-    if (!sub) return console.error("Need --sub <subreddit> when using post ID");
-    result = await api.thread(sub, input, { sort, limit, depth });
+  try {
+    if (input.includes("reddit.com")) {
+      result = await api.threadFromUrl(input, {});
+    } else {
+      const sub = opt("sub");
+      if (!sub) return console.error("Need --sub <subreddit> when using post ID");
+      result = await api.thread(sub, input, {});
+    }
+  } catch (err: any) {
+    throw err;
   }
 
   if (flag("json")) return console.log(fmt.toJson(result));
@@ -312,7 +312,10 @@ async function cmdPopular() {
 
   console.log("\n🔥 Popular Subreddits\n");
   for (const s of subs) {
-    console.log(`  r/${s.name.padEnd(22)} | ${String(s.subscribers).padStart(10)} subs | ${String(s.activeUsers).padStart(6)} online | ${s.title.slice(0, 40)}`);
+    const desc = (s.description || s.title || "").slice(0, 50);
+    const age = s.age ? ` | ${s.age}` : "";
+    console.log(`  r/${s.name.padEnd(22)} ${desc}${age}`);
+    console.log(`    ${s.url}`);
   }
 }
 
@@ -480,9 +483,9 @@ GLOBAL OPTIONS:
     --provider <name>        Data provider (see below)
 
 PROVIDERS:
-    reddit (default)         old.reddit.com JSON — real-time, no auth
-    pullpush                 PullPush API — historical/deleted data, global search
-    arctic-shift             Arctic Shift — historical archive, requires --sub or --author
+    reddit (default)         old.reddit.com via browserless — real-time, full content (~1.3s/call)
+    pullpush                 PullPush API — fast historical/deleted data, global search
+    arctic-shift             Arctic Shift — historical archive with full selftext, requires --sub or --author
 
 EXAMPLES:
     npx tsx reddit.ts search "pumpfun scam" --sort top --time month

@@ -1,82 +1,77 @@
 ---
 name: reddit-research
 description: >
-  Reddit research skill — zero auth, zero dependencies, three data providers.
-  Search posts, read threads with comments, monitor subreddits, analyze users,
-  track cross-posts, search comments, and run watchlists. Default provider uses
-  old.reddit.com JSON endpoints. PullPush and Arctic Shift available for
-  historical/deleted content. Use when asked to search Reddit, check what people
-  are saying, find solutions to problems, or research any topic with real
-  community opinions.
+  Reddit research skill — no API key, no login, three data providers.
+  Search posts, read full threads with comments, monitor subreddits, analyze
+  users, search comments, and run watchlists. Uses browserless headless Chrome
+  to bypass Reddit's Cloudflare Enterprise protection transparently. PullPush
+  and Arctic Shift available for historical/deleted content.
 ---
 
 # Reddit Research
 
-General-purpose Reddit research agent. Search, read, monitor — all from the terminal. No API key needed.
+General-purpose Reddit research tool. Search, read, monitor — no account, no API key.
 
-## Why?
+## How It Works
 
-Reddit is the largest collection of authentic human opinions on the internet. Unlike SEO-optimized blog posts or sponsored content, Reddit threads contain real experiences, tested solutions, and unfiltered takes.
+Reddit blocked unauthenticated `.json` API calls at the TLS/HTTP2 layer in 2026 (Cloudflare Enterprise). This skill bypasses that transparently using a local **browserless** headless Chrome instance, which presents real browser fingerprints. The user never sees a login prompt.
 
-**Zero auth. Zero cost. Zero dependencies.**
+**Requires:** browserless running at `http://10.0.0.100:3000` (always up on PHATT-RAID).
+
+PullPush and Arctic Shift are accessed directly via HTTP — no browser needed.
 
 ## Data Providers
 
-| Provider | Flag | Best For | Limitation |
-|----------|------|----------|------------|
-| **Reddit** (default) | `--provider reddit` | Real-time data, feeds, threads | ~60 req/min |
-| **PullPush** | `--provider pullpush` | Historical/deleted posts, global comment search | Sometimes down |
-| **Arctic Shift** | `--provider arctic-shift` | Archived data, deep history | Requires `--sub` or `--author` |
+| Provider | Flag | Best For | Notes |
+|----------|------|----------|-------|
+| **Reddit** (default) | `--provider reddit` | Real-time data, feeds, full threads | ~1–2s/call via browserless |
+| **PullPush** | `--provider pullpush` | Historical/deleted posts, global comment search | Sometimes slow or down |
+| **Arctic Shift** | `--provider arctic-shift` | Archived posts with full selftext | Requires `--sub` or `--author` |
 
-**Default is Reddit** (real-time). Switch to PullPush or Arctic Shift when you need historical data or deleted content.
+**Use Reddit (default)** for fresh data and full thread reading. Switch providers for historical or archived content.
 
 ## Setup
 
-Node.js 18+ required (for native `fetch`). No `npm install` needed.
+Node.js 18+ required. No `npm install` needed.
 
 ```bash
 cd <skill-dir>/scripts
+npx tsx reddit.ts --help
 ```
 
-## CLI Tool
+## Commands
 
-### Search
+### Search Posts
 
 ```bash
 npx tsx reddit.ts search "<query>" [options]
 ```
 
-**Options:**
+Options:
 - `--sub <subreddit>` — restrict to a subreddit
-- `--sort relevance|top|new|hot|comments` — sort order (default: relevance)
-- `--time hour|day|week|month|year|all` — time filter (default: week)
+- `--sort relevance|top|new|hot|comments`
+- `--time hour|day|week|month|year|all`
 - `--limit N` — max results (default: 15)
-- `--provider reddit|pullpush|arctic-shift` — data source
-- `--author <username>` — filter by author (Arctic Shift only)
-- `--compact` — one-line format
-- `--save` — save results to file
-- `--json` — raw JSON output
-- `--markdown` — markdown formatted output
+- `--provider reddit|pullpush|arctic-shift`
+- `--author <username>` — Arctic Shift only
+- `--compact` / `--json` / `--markdown`
 
-**Examples:**
 ```bash
-npx tsx reddit.ts search "pumpfun scam" --sort top --time month
+npx tsx reddit.ts search "Claude Code tips" --sort top --time month
 npx tsx reddit.ts search "best VPN" --sub privacy --sort top --time year
-npx tsx reddit.ts search "openclaw" --provider pullpush --limit 20
-npx tsx reddit.ts search "agent" --provider arctic-shift --sub openclaw
+npx tsx reddit.ts search "ocplatform" --provider pullpush --limit 20
+npx tsx reddit.ts search "agent tools" --provider arctic-shift --sub ClaudeAI
 ```
 
-### Comment Search
-
-Search through comments using PullPush or Arctic Shift:
+### Search Comments
 
 ```bash
 npx tsx reddit.ts comments "<query>" [--sub <subreddit>] [--provider pullpush|arctic-shift] [--limit N]
 ```
 
 ```bash
-npx tsx reddit.ts comments "solana scam" --provider pullpush --limit 10
-npx tsx reddit.ts comments "openclaw" --provider arctic-shift --sub openclaw
+npx tsx reddit.ts comments "authentication bug" --provider pullpush --limit 10
+npx tsx reddit.ts comments "ocplatform" --provider arctic-shift --sub ClaudeAI
 ```
 
 ### Subreddit Feeds
@@ -89,6 +84,8 @@ npx tsx reddit.ts top <subreddit> [--time day|week|month|year|all] [--limit N]
 npx tsx reddit.ts controversial <subreddit> [--time day|week] [--limit N]
 ```
 
+Note: Stickied posts (megathreads, announcements) are filtered from feed output by default.
+
 ### Multi-Subreddit Feed
 
 ```bash
@@ -98,13 +95,20 @@ npx tsx reddit.ts multi <sub1+sub2+sub3> [--sort hot|new|top] [--time day|week] 
 ### Read Thread
 
 ```bash
-npx tsx reddit.ts thread <url> [--sort top|best|new|controversial] [--limit N] [--depth N]
+npx tsx reddit.ts thread <url|post_id> [--sub <subreddit>]
 ```
 
-### User Profile
+Accepts full Reddit URLs or bare post IDs (with `--sub`). Returns full post body + all comments.
 
 ```bash
-npx tsx reddit.ts user <username> [--posts|--comments] [--sort new|top|hot] [--limit N]
+npx tsx reddit.ts thread https://reddit.com/r/ClaudeAI/comments/1ud97sd/
+npx tsx reddit.ts thread 1ud97sd --sub ClaudeAI
+```
+
+### User Profile & Posts
+
+```bash
+npx tsx reddit.ts user <username> [--type overview|links|comments] [--sort new|top] [--limit N]
 ```
 
 ### Subreddit Info
@@ -112,6 +116,8 @@ npx tsx reddit.ts user <username> [--posts|--comments] [--sort new|top|hot] [--l
 ```bash
 npx tsx reddit.ts subreddit <name>
 ```
+
+Note: subscriber counts are hidden for anonymous browsing — returns name, description, and age.
 
 ### Find Subreddits
 
@@ -141,104 +147,103 @@ npx tsx reddit.ts wiki <subreddit> [page]
 
 ```bash
 npx tsx reddit.ts watchlist                       # Show all
-npx tsx reddit.ts watchlist add <sub> [note]      # Add subreddit
+npx tsx reddit.ts watchlist add <sub> [note]      # Add
 npx tsx reddit.ts watchlist remove <sub>          # Remove
-npx tsx reddit.ts watchlist check                 # Check hot posts from all
+npx tsx reddit.ts watchlist check                 # Check hot posts from all watched
 ```
 
 ### Cache
 
 ```bash
-npx tsx reddit.ts cache stats     # Cache statistics
-npx tsx reddit.ts cache clear     # Clear all cached data
+npx tsx reddit.ts cache stats
+npx tsx reddit.ts cache clear
 ```
 
-## Research Loop (Agentic)
+## Agentic Research Loop
 
-When doing deep research, follow this loop:
+For deep research on a topic:
 
-### 1. Decompose the Question
+### 1. Decompose into queries
 
-Turn the research question into 3-5 search queries:
-- **Direct query**: Core keywords
-- **Subreddit-specific**: Search within the most relevant sub
-- **Solution-focused**: Add "solved", "fix", "how to"
-- **Experience-focused**: Add "experience", "review", "worth it"
-- **Negative signal**: "scam", "avoid", "warning"
-- **Historical**: Use `--provider pullpush` for deleted/old content
+- Direct keywords
+- Subreddit-scoped: `--sub <relevant_sub>`
+- Solution-focused: add "solved", "fix", "how to"
+- Experience-focused: add "experience", "review", "worth it"
+- Negative signal: add "scam", "avoid", "warning"
+- Historical: `--provider pullpush` for older/deleted content
 
-### 2. Search and Triage
+### 2. Triage results
 
-Run each query. For each result set:
-- High score + lots of comments = worth reading the thread
-- Low score but specific = might have niche info
+- High score + high comment count = read the thread
 - Cross-posted = narrative spreading
 
-### 3. Read Key Threads
+### 3. Read key threads
 
 ```bash
-npx tsx reddit.ts thread <url> --sort top --limit 30
+npx tsx reddit.ts thread <url> --limit 50
 ```
 
-### 4. Cross-Reference
+### 4. Comment deep-dive
 
 ```bash
-npx tsx reddit.ts duplicates <post_id>
+npx tsx reddit.ts comments "<specific phrase>" --provider pullpush --limit 20
 ```
 
-### 5. Comment Deep Dive
-
-Search through comments when posts don't surface the answer:
-```bash
-npx tsx reddit.ts comments "specific error message" --provider pullpush --limit 20
-```
-
-### 6. Synthesize
-
-Group findings by theme:
+### 5. Synthesize
 
 ```
-### [Finding/Theme]
+### [Theme/Finding]
 [Summary]
-- u/username in r/subreddit (⬆️ N): "[key quote]" [Link](url)
-- u/username2 in r/subreddit2 (⬆️ N): "[another take]" [Link](url)
+- u/username in r/subreddit (⬆️ N): "[key quote]" — [link]
 ```
 
 ## Heartbeat Integration
 
-On heartbeat, run `watchlist check` to see if watched subreddits have notable activity. Flag only if genuinely interesting/actionable.
+On `hb_signal`, run `watchlist check` to scan watched subreddits. Flag only if genuinely notable or actionable.
 
 ## Rate Limits
 
-- **Reddit JSON**: ~60 req/min, User-Agent required, auto-retry with backoff
-- **PullPush**: Generous, no official limit, sometimes down
-- **Arctic Shift**: Generous, no official limit
-- **Cache**: 15min TTL prevents redundant hits
+- **Reddit via browserless**: No hard limit, ~1–2s per page load. Browserless handles concurrency (10 max concurrent sessions on PHATT-RAID).
+- **PullPush**: Generous, no official limit. Occasionally slow or returning empty for recent posts (freshness lag ~hours).
+- **Arctic Shift**: Generous, no official limit. Requires `--sub` or `--author` on all searches.
+- **Cache**: 15min TTL. Prevents redundant browserless calls.
+
+## Infrastructure Dependencies
+
+| Dependency | URL | Notes |
+|------------|-----|-------|
+| browserless | `http://10.0.0.100:3000` | Always running on PHATT-RAID. Reddit provider fails without it. |
+| PullPush | `https://api.pullpush.io` | External, free, no key |
+| Arctic Shift | `https://arctic-shift.photon-reddit.com` | External, free, no key |
 
 ## File Structure
 
 ```
 skills/reddit-research/
-├── SKILL.md                # This file
+├── SKILL.md                   # This file
 ├── README.md
-├── package.json            # Zero dependencies
+├── _meta.json
+├── package.json               # Zero npm dependencies
 ├── assets/
-│   └── banner.svg
 ├── scripts/
-│   ├── reddit.ts           # CLI entry point
+│   ├── reddit.ts              # CLI entry point
 │   └── lib/
-│       ├── api.ts          # Reddit + PullPush + Arctic Shift wrapper
-│       ├── cache.ts        # File-based cache
-│       └── format.ts       # Terminal + markdown formatters
+│       ├── api.ts             # Reddit (browserless) + PullPush + Arctic Shift
+│       ├── scraper.ts         # browserless /function wrapper
+│       ├── session.ts         # Minimal fetch helper for external APIs
+│       ├── cache.ts           # File-based result cache (15min TTL)
+│       └── format.ts          # Terminal + markdown formatters
 ├── data/
-│   ├── watchlist.json      # Watched subreddits
-│   └── cache/              # Auto-managed
+│   ├── watchlist.json         # Watched subreddits
+│   └── cache/                 # Auto-managed, .gitignored
 └── references/
-    └── reddit-json-api.md  # API endpoint reference
+    └── reddit-json-api.md     # Legacy API reference (historic)
 ```
 
-## Requirements
+## Known Limitations
 
-- Node.js 18+ (for native `fetch`)
-- No API key needed
-- No npm install needed — zero dependencies
+- **Subscriber counts**: Reddit hides these for anonymous browsing. `subreddit` command returns 0.
+- **User NSFW gate**: Some user profiles show an age-gate interstitial for anonymous viewers. Karma is still scraped from the page; post history may be empty.
+- **PullPush freshness**: Posts from the last few hours may not be indexed yet. Use Reddit (default) for real-time.
+- **Arctic Shift requirement**: `--sub` or `--author` is mandatory — global search not supported.
+- **Thread depth**: Deeply nested comment trees may not fully expand (Reddit collapses them behind "load more" buttons that require interaction).
