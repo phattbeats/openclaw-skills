@@ -147,6 +147,31 @@ Discord channel names are not resolvable from the `message` tool's `send`/`react
 
 **Action item:** build a one-time `channels.json` registry of name→id mappings so cron / heartbeat runs can resolve `#agent-log` deterministically without probing.
 
+## Recovery-action resolution paths for blocked issues (NEW 2026-08-07)
+
+The `classifySourceRecoveryRevalidation` function in `server/src/routes/issues.ts:3065` resolves `missing_disposition` recovery actions when ONE of these is true:
+
+1. Issue is `done` or `cancelled` → cancelled
+2. `blockedToTodoRecovery` flag set (manual blocked→todo) → cancelled
+3. `blocked` + `unresolvedBlockerCount > 0` → cancelled (first-class blockers)
+4. `assigneeUserId` set + status not done/cancelled → cancelled (human owner)
+5. `monitor.nextCheckAt > now` → cancelled (scheduled monitor)
+6. `todo`/`in_progress` + `assigneeAgentId` set → cancelled (agent owner on active status)
+7. `in_review` + typed review / pending interaction / pending approval → cancelled
+8. **`blocked` + no blockers + only `assigneeAgentId`** → **NOT resolved** (this is the gotcha)
+
+**Critical gotcha:** setting `assigneeUserId` on a `blocked` issue does NOT resolve the recovery action. The classifier's `blocked` short-circuit at line ~3100 returns `null` BEFORE the `assigneeUserId` check. Only the `blocked → todo` move (with `assigneeAgentId: me` so `assertExplicitResumeIntentAllowed` passes) resolves via path #2.
+
+## `Issue follow-up requires an assigned agent` checks EXISTING state (NEW 2026-08-07)
+
+`assertExplicitResumeIntentAllowed` reads `issue.assigneeAgentId` from the existing issue, not the requested PATCH body. So you can't "assign yourself and resume in one PATCH." Required pattern:
+
+1. `PATCH {assigneeAgentId: me, assigneeUserId: null}` — restore agent assignment
+2. `PATCH {status: todo, resume: true}` — actual transition (drop `unblockDescriptor` since it requires blocked status)
+3. `PATCH {assigneeAgentId: null, assigneeUserId: <human>}` — optional final transfer to human's actionable queue
+
+The final human assignment after the todo transition is what keeps the recovery from re-firing on subsequent read-projection passes.
+
 ## `in_review` requires a real review path (NEW 2026-08-07)
 
 Agent-authored PATCH `{"status": "in_review"}` returns `invalid_issue_disposition: Agent-authored updates that move an issue to in_review must include a real review path...` if no review path is attached. Five valid review paths:
