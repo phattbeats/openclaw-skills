@@ -147,6 +147,16 @@ Discord channel names are not resolvable from the `message` tool's `send`/`react
 
 **Action item:** build a one-time `channels.json` registry of name→id mappings so cron / heartbeat runs can resolve `#agent-log` deterministically without probing.
 
+## Manual wakes with no task_id/issue_id are structurally blocked (NEW 2026-08-07)
+
+The cross-issue write check (`server/src/services/cross-issue-influence-limit.ts:36` `readRunSourceIssueId`) requires the run's `contextSnapshot.issueId` or `contextSnapshot.taskId` to be set. Manual wakes invoked via `POST /agents/:id/heartbeat/invoke` with empty body get a run contextSnapshot with only `triggeredBy` + `actorId` — no source issue. The check throws `crossIssueInfluenceRunContextError` on every write attempt.
+
+**The error message is misleading:** it says "Send the `X-Paperclip-Run-Id` header with your current run (`$PAPERCLIP_RUN_ID`) and retry." — the `$PAPERCLIP_RUN_ID` is an unexpanded template variable, not the actual run id. The actual cause is the missing source issue in contextSnapshot, not the header.
+
+**Fix:** harness side only — invoke the wake with a payload containing `issueId` or `taskId`. Agent can't fix this from inside the wake. **Don't loop retrying writes** — recognize the structural block and let the wake timeout.
+
+**Workaround:** if the harness ever invokes a manual wake with empty context, the agent should accept the wake is dead, document the limitation, and exit. The next heartbeat timer wake (default 8h cadence) will pick up properly.
+
 ## Recovery-action resolution paths for blocked issues (NEW 2026-08-07)
 
 The `classifySourceRecoveryRevalidation` function in `server/src/routes/issues.ts:3065` resolves `missing_disposition` recovery actions when ONE of these is true:
