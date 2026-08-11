@@ -18,6 +18,14 @@ _Last consolidated: 2026-08-06 (workspace rebuilt same morning — MEMORY.md rec
 - heartbeat config: enabled, cooldownSec 60, intervalSec 28800 (8h), wakeOnDemand, maxConcurrentRuns 1
 - runtime URL: `ws://OpenClaw:18789`, token: `paperclip-gateway-token-phatttech-2026`, sessionKey: `agent:engineer:paperclip`
 
+## Current State (snapshot 2026-08-11 01:54 EDT)
+
+- **0 in_progress issues** (PHA-1925 re-affirmed blocked this wake)
+- **3 in_review total** (mine — PHA-1919, PHA-1642, PHA-1309)
+- **1 blocked total** (PHA-1925 — VM-step chain gate, BIOS-level deeper blocker)
+- **2 todo** assigned (PHA-1926, PHA-1927 — chain tail, blocked by PHA-1925/PHA-1926 respectively)
+- **PHA-1925 dispositioned `blocked` (twice now)**: wake #1 (01:16) blocked on "spin up VM"; wake #2 (01:50, `issue_reopened_via_comment`) reopened via Brandon's BIOS-finding comment `f7fe0fb9-…` — the actual blocker is **SVM/AMD-V disabled in PHATT-RAID's BIOS**, requiring physical or IPMI/KVM access to the headless box. New gate `request_confirmation 02f72214-e14e-466b-98cd-5ad34c4cdcaf` (board_only, pending) explicitly asks for the three-part sign-off: (a) BIOS SVM enabled, (b) VM created, (c) SSH handoff. Old `32ca57e7-…` auto-superseded by Brandon's user comment (default `supersedeOnUserComment: true` fired at 01:50:17). Bring-up script still pre-staged at `/tmp/pha-1925/bring-up.sh`. Chain wiring intact: PHA-1925 → PHA-1926 → PHA-1927.
+
 ## Current State (snapshot 2026-08-11 01:21 EDT)
 
 - **0 in_progress issues** (PHA-1925 transitioned in_progress → blocked this wake)
@@ -227,6 +235,38 @@ When a task is fully staged offline but blocked on an external gate, **pre-stage
 ### `install_services.sh` systemd template path convention (NEW 2026-08-11)
 
 The `install/install_services.sh` in the FS42 bundle plus the systemd templates under `install/systemd/*.service.template` hardcode `__INSTALL_DIR__/env/bin/python3` for the Field Player / Cable Box / OSD / Remote Controller services. The venv MUST live at `$INSTALL_DIR/env/` (i.e. `/opt/coreyvision/env/`) for the services to bind correctly. The `/opt/fs42/venv` path documented in some issue descriptions is a **manual fallback** — using it requires re-templating the systemd service files (`s|__INSTALL_DIR__|/opt/fs42|g` and a separate venv path). **Always follow the install-script convention; flag any deviation as a discrepancy in the disposition comment.**
+
+### BIOS virtualization gate is a real-world blocker for VM tasks (NEW 2026-08-11)
+
+The agent lane can verify ground truth (what the kernel reports, what `lscpu` shows, what `kvm-ok` / `kvm_amd` modules load) but cannot flip BIOS-level settings. When a task explicitly depends on virtualization (kvm_amd, kvm_intel, VT-x, AMD-V/IOMMU), the upstream gate is the BIOS setting, not the VM creation step. **Pattern:** when a "spin up VM" task stalls, the failure mode is often a BIOS-level virtualization disable, not a missing VM template or SSH key. Diagnostic commands to pre-flight before declaring "VM is up":
+
+```bash
+lsmod | grep kvm
+dmesg | grep -E "kvm:|Virtualization"
+lscpu | grep -E "Virtualization|Hypervisor"
+grep -E "svm|vmx" /proc/cpuinfo | head -1
+ls -la /dev/kvm
+```
+
+**No software workaround** when the BIOS gates virtualization off. The fix requires physical or IPMI/KVM access to the headless box's BIOS setup. Surface this as a first-class blocker with a clear off-lane owner. **Lesson provenance:** PHA-1925 wake #2 — Brandon found `kvm: support for 'kvm_amd' disabled by bios` on PHATT-RAID; Unraid VM Manager showed the yellow "no VT-x or AMD-V capability" banner.
+
+### `issue_reopened_via_comment` puts the issue back in `in_progress` (NEW 2026-08-11)
+
+When a user comment comes in on a `blocked` issue, the harness auto-transitions `blocked → in_progress` and fires an `issue_reopened_via_comment` wake. The prior disposition (and request_confirmation, if `supersedeOnUserComment: true`) are auto-superseded. **Pattern:** on this wake, the right action is:
+1. Read the new comment first (it's the trigger for the wake).
+2. Decide if the disposition changes. If the comment deepens or changes the blocker, re-affirm `blocked` with an updated disposition + a new request_confirmation (the old one is now expired — can't be edited).
+3. If the comment is a positive signal (e.g., "VM is up"), the chain unblocks; PATCH `in_progress` or `done` instead.
+
+**Lesson provenance:** PHA-1925 wake #2 (run `8db87ae0-…`).
+
+### Per-issue interactions cannot be edited (NEW 2026-08-11)
+
+`POST /api/issues/{id}/interactions` is the only mutation endpoint. There's no `PATCH /api/issues/{id}/interactions/{interactionId}`. When a request_confirmation's premise is invalidated (e.g., a new comment reveals a deeper blocker), the canonical pattern is:
+1. The old interaction auto-supersedes via `supersedeOnUserComment: true` on the agent-issued comment OR the user's new comment.
+2. Create a new interaction with the updated prompt (consider a different `idempotencyKey` to avoid server-side dedup confusion).
+3. PATCH status with the new interaction as the review path.
+
+**Lesson provenance:** PHA-1925 wake #2 — old `32ca57e7-…` (VM access gate) was auto-superseded by Brandon's BIOS comment; new `02f72214-…` (BIOS-aware gate) created with `idempotencyKey: confirmation:{issueId}:bios-vm-ssh`.
 
 ### Wake `issue_children_completed` = parent wakes when child finishes (NEW 2026-08-10)
 Automated wake that fires when a direct child transitions to a state that requires parent attention. Carries `wake_reason: issue_children_completed` and the latest child comment as `wake_comment_id`. **Pattern:** read the wake payload's `childIssueSummaries` first — they summarize what the child did. The full disposition comment on the child may be truncated; fetch `/api/issues/{child_id}/comments` for the full text.
